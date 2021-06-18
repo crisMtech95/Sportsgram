@@ -19,7 +19,7 @@ export default function LoginFormPage() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
+        // setErrors([]);
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
