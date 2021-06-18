@@ -1,3 +1,4 @@
+import { remove } from "js-cookie";
 import { csrfFetch } from "./csrf";
 
 
@@ -44,6 +45,12 @@ export const signupUser = (user) => async(dispatch) => {
     const data = await res.json();
     dispatch(loginUser(data.user));
     return res
+}
+
+export const logout = () => async(dispatch) => {
+    const res = await csrfFetch("/api/session", { method: "DELETE" });
+    dispatch(logoutUser())
+    return res; 
 }
 
 const initialState = { user: null};
