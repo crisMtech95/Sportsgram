@@ -5,6 +5,8 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage'
 import * as sessionActions from './store/session'
 import Navigation from "./components/Navigation";
+import HomePage from './components/HomePage'
+import MainPage from './components/MainPage'
 
 function App() {
   const dispatch = useDispatch()
@@ -13,20 +15,27 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch])
 
+
   return isLoaded && (
-    <>
-    <Navigation  isLoaded={isLoaded} />
-      {isLoaded && (
+    <div className="mainContainer">
+      <Navigation  isLoaded={isLoaded} />
+        {isLoaded && (
         <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+            <Route path="/" exact>
+              <MainPage />
+            </Route>
+            <Route path="/explore" exact>
+              <HomePage />
+            </Route>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
         </Switch>
-      )}
-    </>
+        )}
+    </div>
   );
 }
 

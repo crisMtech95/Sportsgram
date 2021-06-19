@@ -1,7 +1,5 @@
 
-
-
-
+import { Redirect } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
@@ -33,7 +31,7 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
+    <div className="navbar__userInfo">
       <button onClick={openMenu}>
       <i className="fas fa-user"></i>
       </button>
@@ -46,7 +44,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

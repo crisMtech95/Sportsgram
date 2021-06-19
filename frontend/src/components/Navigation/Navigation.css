@@ -1,0 +1,94 @@
+.mainContainer__navbar {
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    font-family: Helvetica;
+    position: fixed;
+    top: 0;
+    height: 64px;
+    z-index: 9;
+    display: flex;
+
+}
+
+.navbar__homepage {
+    width: 200px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.navbar__homepage > a{
+    text-decoration: none;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar__userinfo {
+    display: flex;
+
+    width: 207px;
+}
+
+.navbar__userIcon {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.navbar__userIcon > button{
+    width: 33px;
+    height: 33px;
+    border-radius: 100%;
+}
+
+.navbar__search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+.navbar__search > input {
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    /* background-color: rgba(255,255,255,0.5);
+    outline: white; */
+}
+
+.navbar__userbtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height:100%;
+    position: relative;
+    right: 8px;
+}
+
+.navbar__userbtns > a{
+    color: white;
+    text-decoration: none;
+    border: solid 1px white;
+    width: 96px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 550;
+    border-radius: 4px;
+    text: Helvetica;
+}
+
+#navbar__login {
+    border: none;
+}
+#navbar__signup{
+    background: white;
+    color: black;
+}

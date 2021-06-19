@@ -12,20 +12,25 @@ function Navigation({ isLoaded }){
     sessionLinks = (<ProfileButton user={sessionUser} />);
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <div className="navbar__userbtns">
+        <NavLink to="/login" id="navbar__login">Log In</NavLink>
+        <NavLink to="/signup" id="navbar__signup">Sign Up</NavLink>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className="mainContainer__navbar">
+          <div className="navbar__homepage">
+            <NavLink exact to="/">Home</NavLink>
+          </div>
+          <div className="navbar__search">
+            <input type="text" />
+          </div>
+          <div className="navbar__userIcon">
+            {isLoaded && sessionLinks}
+          </div>
+    </div>
   );
 }
 
