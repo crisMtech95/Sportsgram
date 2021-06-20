@@ -105,3 +105,7 @@
     z-index: 2;
 
 }
+#homePage__btn > a:hover {
+        text-shadow: 2px 2px 10px #000000;
+        /* filter: dropshadow(color=#000000, offx=2, offy=2); */
+}
