@@ -28,47 +28,44 @@ export default function SignupFormPage () {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <ul>
-                {errors.map((err, i) => <li key={i}>{err}</li>)}
-            </ul>
-            <label> Username
-                <br />
-                <input
-                type="text"
-                required
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                />
-            </label>
-            <label> Email
-                <br />
-                <input
-                type="text"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                />
-            </label>
-            <label> Password
-                <br />
-                <input
-                type="password"
-                required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                />
-            </label>
-            <label> Confirm Password
-                <br />
-                <input
-                type="password"
-                required
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                />
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div className="login__mainContainer" id="bcimgsignup">
+            <div className="form_container">
+                <form onSubmit={onSubmit} className="signup">
+                    <ul>
+                        {errors.map((err, i) => <li key={i}>{err}</li>)}
+                    </ul>
+                    <label /> Username
+                        <input className="signup_input"
+                        type="text"
+                        required
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                        />
+
+                    <label /> Email
+                        <input className="signup_input"
+                        type="text"
+                        required
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        />
+                    <label /> Password
+                        <input className="signup_input"
+                        type="password"
+                        required
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        />
+                    <label /> Confirm Password
+                        <input className="signup_input"
+                        type="password"
+                        required
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        />
+                    <button type="submit" className="signup_btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
     )
 }

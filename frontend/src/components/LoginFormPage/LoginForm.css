@@ -1,0 +1,58 @@
+.form_container {
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  background: white;
+  width: 300px;
+  padding: 20px;
+  height: 300px;
+}
+
+#bcimglogin {
+    background-image: url("../../homepageImg/bcimgsignup.jpg");
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+}
+
+
+.signup {
+  margin-top: 110px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  box-shadow: 0 20px 48px rgb(0 0 0 / 15%);
+}
+.signup label {
+  display: block;
+  margin: 10px 0 0 0;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+}
+
+.signup_btn {
+  background-color: #2ca2f7;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin-top: 45px;
+  width: 200px;
+  border: 1px solid lightgrey;
+  transition: background-color;
+}
+
+.signup_input {
+  display: block;
+  margin: 10px 0 0 0;
+  border: 1px solid rgb(187, 187, 187);
+  padding: 8px;
+  border-radius: 4px;
+}

@@ -25,7 +25,7 @@ function Navigation({ isLoaded }){
             <NavLink exact to="/">Home</NavLink>
           </div>
           <div className="navbar__search">
-            <input type="text" />
+            <input type="text" placeholder="Photos,athletes,people"/>
           </div>
           <div className="navbar__userIcon">
             {isLoaded && sessionLinks}

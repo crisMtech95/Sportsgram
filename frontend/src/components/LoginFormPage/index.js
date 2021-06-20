@@ -28,33 +28,29 @@ export default function LoginFormPage() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <ul>
-                {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
-            </ul>
-            <div>
-                <label> Username or Email
-                    <br />
-                    <input
-                        type="text"
-                        required
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                    />
-                </label>
+        <div className="login__mainContainer" id="bcimglogin">
+            <div className="form_container">
+                <form onSubmit={onSubmit} className="signup">
+                    <ul>
+                        {errors && errors.map((err, i) => <li key={i}>{err}</li>)}
+                    </ul>
+                        <label /> Username or Email
+                            <input className="signup_input"
+                                type="text"
+                                required
+                                value={credential}
+                                onChange={(e) => setCredential(e.target.value)}
+                            />
+                        <label /> Password
+                            <input className="signup_input"
+                                type="password"
+                                required
+                                value={password}
+                                onChange={(e)=> setPassword(e.target.value)}
+                            />
+                    <button type="submit" className="signup_btn">Log In</button>
+                </form>
             </div>
-            <div>
-                <label> Password
-                    <br />
-                    <input
-                        type="password"
-                        required
-                        value={password}
-                        onChange={(e)=> setPassword(e.target.value)}
-                    />
-                </label>
-            </div>
-            <button type="submit">Log In</button>
-        </form>
+        </div>
     )
 }
