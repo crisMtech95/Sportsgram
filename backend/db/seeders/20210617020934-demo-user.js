@@ -8,16 +8,19 @@ module.exports = {
       {
         email: 'demo@user.io',
         username: 'Demo-lition',
+        fullName: "demo",
         hashedPassword: bcrypt.hashSync('password'),
       },
       {
         email: faker.internet.email(),
         username: 'FakeUser1',
+        fullName: "fake",
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
       {
         email: faker.internet.email(),
         username: 'FakeUser2',
+        fullName: "fake2",
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
     ], {});
@@ -30,4 +33,3 @@ module.exports = {
     }, {});
   }
 };
-

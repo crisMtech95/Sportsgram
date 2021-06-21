@@ -9,7 +9,7 @@ export default function LoginFormPage() {
     const sessionUser = useSelector(state => state.session.user)
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = ([]);
+    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
 
 
@@ -19,7 +19,7 @@ export default function LoginFormPage() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // setErrors([]);
+        setErrors([]);
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();

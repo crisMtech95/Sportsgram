@@ -6,6 +6,7 @@ import * as sessionActions from '../../store/session'
 
 export default function SignupFormPage () {
     const sessionUser = useSelector(state => state.session.user)
+    const [fullName, setName] = useState("")
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -18,7 +19,7 @@ export default function SignupFormPage () {
     const onSubmit = (e) => {
         e.preventDefault()
         if (password === confirmPassword) {
-            return dispatch(sessionActions.signupUser({email, username, password}))
+            return dispatch(sessionActions.signupUser({email, username, password, fullName}))
                 .catch(async (res) => {
                     const data = await res.json()
                     if (data && data.errors) setErrors(data.errors)
@@ -41,7 +42,13 @@ export default function SignupFormPage () {
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                         />
-
+                    <label /> Full Name
+                        <input className="signup_input"
+                        type="text"
+                        required
+                        value={fullName}
+                        onChange={e => setName(e.target.value)}
+                        />
                     <label /> Email
                         <input className="signup_input"
                         type="text"

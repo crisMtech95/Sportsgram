@@ -82,7 +82,7 @@
     align-items: center;
     font-weight: 550;
     border-radius: 4px;
-    text: Helvetica;
+    font-family: Helvetica;
 }
 
 #navbar__login {
