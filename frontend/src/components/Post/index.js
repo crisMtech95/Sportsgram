@@ -1,28 +1,30 @@
 import "./Post.css"
+import { useState } from "react"
 import { delPost, editPost } from '../../store/images'
 import { useDispatch, useSelector } from "react-redux"
+import { NavLink } from "react-router-dom"
 
 export default function Post ({ img }) {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
+    const [showForm, setForm] = useState(false)
+    
 
 
     const delImg = (e) => {
         e.preventDefault()
         dispatch(delPost(img))
     }
-    const editImg = (e) => {
-        e.preventDefault()
-        // dispatch(editPost(img))
-    }
+
 
     return (
         <div className="singlePost">
             <div className="post__top">
                 <p>{img.userId}</p>
-                {sessionUser.id === img.userId && <div>
-                    <button type="submit" onClick={delImg}>Delete</button>
-                    <button type="submit" onClick={editImg}>Edit</button>
+                {sessionUser.id === img.userId &&
+                    <div class="post__editDelbtns">
+                        <button type="submit" onClick={delImg}>Delete</button>
+                        <NavLink to="/editPost" img={img}>Edit</NavLink>
                     </div>
                     }
 

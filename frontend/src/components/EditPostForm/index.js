@@ -1,20 +1,20 @@
-import './PostForm.css'
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect, useHistory } from "react-router-dom"
-import  { createPost } from '../../store/images'
+import  { editPost } from '../../store/images'
 
-export default function PostForm () {
+export default function EditPostForm ({img}) {
     const sessionUser = useSelector(state => state.session.user)
     const [imageUrl, setImageUrl] = useState("")
     const [content, setContent] = useState("")
     const [sport, setSport] = useState("")
+    const [newImg, setnewImg] = useState("")
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory();
     const onSubmit = (e) => {
         e.preventDefault()
-         dispatch(createPost({ userId: sessionUser.id, imageUrl, content, sport}));
+         dispatch(editPost({ userId: sessionUser.id, imageUrl, content, sport, id: img.id}));
                     // .catch(async (res) => {
                     // const data = await res.json()
                     // if (data && data.errors) setErrors(data.errors)
@@ -24,7 +24,6 @@ export default function PostForm () {
     if (!sessionUser) return <Redirect to="/login"/>
 
     return (
-        <div className="login__mainContainer" id="bcimgsignup">
             <div className="form_container">
                 <form onSubmit={onSubmit} className="signup">
                     <ul>
@@ -51,9 +50,8 @@ export default function PostForm () {
                         value={sport}
                         onChange={e => setSport(e.target.value)}
                         />
-                    <button type="submit" className="signup_btn">Add Photo</button>
+                    <button type="submit" className="signup_btn">Edit Post</button>
                 </form>
             </div>
-        </div>
     )
 }

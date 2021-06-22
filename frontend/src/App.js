@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from './components/HomePage'
 import MainPage from './components/MainPage'
 import PostForm from './components/PostForm'
+import EditPostForm from './components/EditPostForm'
 
 function App() {
   const dispatch = useDispatch()
@@ -34,8 +35,11 @@ function App() {
             <Route path="/signup">
               <SignupFormPage />
             </Route>
-            <Route>
-              <PostForm path="/addPhoto"/>
+            <Route path="/addPhoto">
+              <PostForm />
+            </Route>
+            <Route path="/editPost">
+              <EditPostForm />
             </Route>
         </Switch>
         )}
