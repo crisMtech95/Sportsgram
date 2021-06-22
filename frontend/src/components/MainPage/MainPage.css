@@ -1,4 +1,17 @@
-.bigContainer > h2 {
+.bigContainer {
+    position: relative;
+    width: 100%;
     color:black;
-    
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: 80px;
+}
+
+
+.albumContainer {
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    position: sticky;
 }

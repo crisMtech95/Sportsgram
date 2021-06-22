@@ -15,16 +15,31 @@ router.get("/", asyncHandler(async(req, res) => {
 }))
 
 router.post("/", asyncHandler(async(req, res) => {
-    const { imageUrl, userId, content, sport, id } = req.body
+    const { imageUrl, userId, content, sport } = req.body
 
-    await images.create({
+    await image.create({
         imageUrl,
         userId,
         content,
         sport,
-        id,
     })
-    return res.redirect("/images")
+
+}))
+
+router.delete("/", asyncHandler(async(req, res) => {
+    const { id } = req.body
+    await image.destroy({
+        where: {
+          id
+        }
+      });
+}))
+
+router.put("/", asyncHandler(async(req, res) => {
+    const { id, imageUrl, userId, content, sport } = req.body
+    const img = await image.update({ id, imageUrl, userId, content, sport });
+    const post = await image.one(img);
+    return res.json(post)
 }))
 
 module.exports = router;

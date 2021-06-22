@@ -1,24 +1,27 @@
 import './PostForm.css'
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Redirect } from "react-router-dom"
-import * as sessionActions from '../../store/session'
+import { Redirect, useHistory } from "react-router-dom"
+import  { createPost } from '../../store/images'
 
 export default function PostForm () {
     const sessionUser = useSelector(state => state.session.user)
-    const [fullName, setName] = useState("")
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
+    const [imageUrl, setImageUrl] = useState("")
+    const [content, setContent] = useState("")
+    const [sport, setSport] = useState("")
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
-
-    if (sessionUser) return <Redirect to="/"/>
-
+    const history = useHistory();
     const onSubmit = (e) => {
         e.preventDefault()
-
-       
+         dispatch(createPost({ userId: sessionUser.id, imageUrl, content, sport}));
+                    // .catch(async (res) => {
+                    // const data = await res.json()
+                    // if (data && data.errors) setErrors(data.errors)
+        // })
+        history.push("/")
     }
+    if (!sessionUser) return <Redirect to="/login"/>
 
     return (
         <div className="login__mainContainer" id="bcimgsignup">
@@ -27,28 +30,28 @@ export default function PostForm () {
                     <ul>
                         {errors.map((err, i) => <li key={i}>{err}</li>)}
                     </ul>
-                    <label /> Username
+                    <label /> Url
                         <input className="signup_input"
                         type="text"
                         required
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
+                        value={imageUrl}
+                        onChange={e => setImageUrl(e.target.value)}
                         />
-                    <label /> Full Name
+                    <label /> content
+                        <textarea className="signup_input"
+                        type="text"
+                        required
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                        />
+                    <label /> sport/title
                         <input className="signup_input"
                         type="text"
                         required
-                        value={fullName}
-                        onChange={e => setName(e.target.value)}
+                        value={sport}
+                        onChange={e => setSport(e.target.value)}
                         />
-                    <label /> Email
-                        <input className="signup_input"
-                        type="text"
-                        required
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        />
-                    <button type="submit" className="signup_btn">Sign Up</button>
+                    <button type="submit" className="signup_btn" to="/">Add Photo</button>
                 </form>
             </div>
         </div>

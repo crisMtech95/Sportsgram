@@ -1,6 +1,6 @@
 .mainContainer__navbar {
     width: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(21, 21, 23, 0.95);
     font-family: Helvetica;
     position: fixed;
     top: 0;
@@ -9,7 +9,7 @@
     display: flex;
 }
 
-
+ 
 .navbar__homepage {
     width: 200px;
     text-decoration: none;

@@ -7,6 +7,7 @@ import * as sessionActions from './store/session'
 import Navigation from "./components/Navigation";
 import HomePage from './components/HomePage'
 import MainPage from './components/MainPage'
+import PostForm from './components/PostForm'
 
 function App() {
   const dispatch = useDispatch()
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route>
+              <PostForm path="/addPhoto"/>
             </Route>
         </Switch>
         )}

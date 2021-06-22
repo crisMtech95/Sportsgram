@@ -21,8 +21,6 @@ export default function MainPage () {
 
     return (
         <div className="bigContainer">
-            <h2>Post will go here</h2>
-            <button >Make a post</button>
             <div className="postContainer">
                 {/* {allImages.map((img) =>
                     <div key={img.id}>
@@ -33,6 +31,7 @@ export default function MainPage () {
                     <Post key={img.id} img={img}/>
                 ))}
             </div>
+            <div className="albumContainer"></div>
         </div>
     )
 }

@@ -1,10 +1,69 @@
 .singlePost {
-    width:500px;
-    height: 500px;
+    position: relative;
+    width:600px;
+    height: 600px;
     color:black;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    margin-bottom: 35px;
 }
+
 
 .post__image {
     width: 100%;
     object-fit: contain;
+    max-height: 400px;
+}
+
+.post__content {
+    overflow:hidden;
+    height: 40px;
+    position: relative;
+    width: 95%;
+    padding-left: 5px;
+}
+.post__content p {
+    margin: 0;
+}
+.post__comment {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 47px;
+    bottom: 0px;
+}
+.post__commentForm {
+    position:absolute;
+    bottom: 0;
+    width: 95%;
+    height: 37px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__commentForm textarea {
+    width: 95%;
+    border: none;
+    border-top: 0.5px solid grey;
+    resize: none;
+    outline: white;
+    font-size: 18px;
+}
+.post__commentForm button {
+    border: none;
+    border-top: 0.5px solid grey;
+}
+
+.mainContainer {
+    background-color: #F3F5F6;
+}
+.post__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__sportTitle h4 {
+    margin: 0;
+    font-weight: 900;
+    margin-bottom: 8px;
 }
