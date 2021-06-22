@@ -29,6 +29,10 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+  const addPhoto = (e) => {
+    e.preventDefault();
+    console.log("this is where you take them to a page to add a photo")
+  };
 
   return (
     <div className="navbar__userInfo">
@@ -40,6 +44,7 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
+            <button onClick={addPhoto}>Upload photo</button>
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>

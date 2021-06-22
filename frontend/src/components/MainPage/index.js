@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getimagesThunk } from '../../store/images'
+import Post from '../Post';
 
 export default function MainPage () {
     const sessionUser = useSelector(state => state.session.user)
@@ -23,16 +24,14 @@ export default function MainPage () {
             <h2>Post will go here</h2>
             <button >Make a post</button>
             <div className="postContainer">
-                {allImages.map((img) =>
+                {/* {allImages.map((img) =>
                     <div key={img.id}>
                         <img src={img.imageUrl} />
                     </div>
-                )}
-                {/* {allImages.map(img => (
-                    <div key={img.id}>
-                        <img alt="hi" src={img.imageUrl} />
-                    </div>
-                ))} */}
+                )} */}
+                {allImages.map(img => (
+                    <Post key={img.id} img={img}/>
+                ))}
             </div>
         </div>
     )
