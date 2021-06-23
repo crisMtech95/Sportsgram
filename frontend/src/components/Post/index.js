@@ -84,7 +84,7 @@ export default function Post ({ img }) {
                 <p>{img.userId}</p>
                 {sessionUser.id === img.userId &&
                     <div className="post__editDelbtns">
-                        <button type="submit" onClick={delImg}>Delete</button>
+                        <button type="submit" onClick={delImg} className="post__del">Delete</button>
                         <EditPostForm img={img}/>
                     </div>
                     }

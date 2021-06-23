@@ -68,6 +68,13 @@
     margin-bottom: 8px;
 }
 
+.post__del {
+    background-color: white;
+    font-weight: 800;
+    font-family:'Times New Roman', Times, serif;
+    border-radius: 5px;
+    border: 0.6px solid rgb(170, 168, 168);
+}
 
 
 
@@ -88,7 +95,10 @@
     right: 0px;
     color: white;
     font-family:'Times New Roman', Times, serif;
-    background-color: rgba(21, 21, 23, 0.8);
+    /* background-color: rgba(21, 21, 23, 0.8); */
+    background: linear-gradient(0.25turn, #3082a5, #070806, #140b0d);
+    /* background-color: rgba(255, 255, 255, 0.8);
+    color: black; */
 }
 .edit__input {
     width: 98%;
