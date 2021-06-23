@@ -36,10 +36,10 @@ router.delete("/", asyncHandler(async(req, res) => {
 }))
 
 router.put("/", asyncHandler(async(req, res) => {
-    const { id, imageUrl, userId, content, sport } = req.body
-    const img = await image.update({ id, imageUrl, userId, content, sport });
-    const post = await image.one(img);
-    return res.json(post)
+    const { id, imageUrl, userId, content, sport } = req.body;
+    const img = await image.findByPk(id)
+    await img.update({imageUrl, userId, content, sport})
+    return res.json(img)
 }))
 
 module.exports = router;

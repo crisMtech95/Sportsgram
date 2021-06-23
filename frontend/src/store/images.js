@@ -69,7 +69,7 @@ export const editPost = (img) => async(dispatch) => {
 let initialState = {};
 
 const imagesReducer = (state = initialState, action) => {
-    const newState = {};
+    let newState = {};
     switch(action.type) {
         case GET_IMAGES:
             action.images.forEach((img) => {

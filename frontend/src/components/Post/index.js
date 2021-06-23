@@ -4,11 +4,64 @@ import { delPost, editPost } from '../../store/images'
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 
+function EditPostForm ({img}) {
+    const sessionUser = useSelector(state => state.session.user)
+    const [imageUrl, setImageUrl] = useState("")
+    const [content, setContent] = useState("")
+    const [sport, setSport] = useState("")
+    const [newImg, setnewImg] = useState("")
+    const [errors, setErrors] = useState([])
+    const dispatch = useDispatch()
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+         dispatch(editPost({ userId: sessionUser.id, imageUrl, content, sport, id: img.id}));
+                    // .catch(async (res) => {
+                    // const data = await res.json()
+                    // if (data && data.errors) setErrors(data.errors)
+        // })
+
+    }
+
+    return (
+            <div className="mainEdit__container">
+                <form onSubmit={onSubmit} className="edit__form">
+                    <ul>
+                        {errors.map((err, i) => <li key={i}>{err}</li>)}
+                    </ul>
+                    <label /> Image Url
+                        <input className="edit__input"
+                        type="text"
+                        required
+                        value={imageUrl}
+                        onChange={e => setImageUrl(e.target.value)}
+                        />
+                    <label /> content
+                        <textarea className="edit__textarea"
+                        type="text"
+                        required
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                        />
+                    <label /> sport/title
+                        <input className="edit__input"
+                        type="text"
+                        required
+                        value={sport}
+                        onChange={e => setSport(e.target.value)}
+                        />
+                    <button type="submit" className="edit__btn">Edit Post</button>
+                </form>
+            </div>
+    )
+}
+
+
 export default function Post ({ img }) {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const [showForm, setForm] = useState(false)
-    
+
 
 
     const delImg = (e) => {
@@ -22,9 +75,9 @@ export default function Post ({ img }) {
             <div className="post__top">
                 <p>{img.userId}</p>
                 {sessionUser.id === img.userId &&
-                    <div class="post__editDelbtns">
+                    <div className="post__editDelbtns">
                         <button type="submit" onClick={delImg}>Delete</button>
-                        <NavLink to="/editPost" img={img}>Edit</NavLink>
+                        <EditPostForm img={img}/>
                     </div>
                     }
 
