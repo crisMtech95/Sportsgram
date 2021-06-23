@@ -1,0 +1,9 @@
+.SinglePost__mainContainer {
+    position: relative;
+    width: 100%;
+    color:black;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: 80px;
+}

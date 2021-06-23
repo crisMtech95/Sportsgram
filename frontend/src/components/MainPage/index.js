@@ -13,7 +13,6 @@ export default function MainPage () {
         dispatch(getimagesThunk())
     }, [dispatch])
 
-    console.log(allImages)
 
     if (!sessionUser) return (
         <Redirect to="/explore"/>

@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_IMAGES = "get/images"
 const ADD_IMAGE = "add/image"
 const DEL_IMAGE = "del/image"
+const GET_IMG = "get/img"
 // const UPDATE_IMAGE = "update/image"
 
 
@@ -12,6 +13,14 @@ export const getImages = (images) => {
         images,
     }
 }
+
+export const bigSingleImg = (image) => {
+    return {
+        type: GET_IMG,
+        image,
+    }
+}
+
 export const postImage = img => {
     return {
         type: ADD_IMAGE,
@@ -33,6 +42,17 @@ export const getimagesThunk = () => async(dispatch) => {
         dispatch(getImages(images));
     }
 }
+
+export const getSinglePost = (id) => async(dispatch) => {
+    const res = await fetch(`/api/images/${id}`)
+    if(res.ok) {
+        const image = await res.json();
+        console.log(image)
+        dispatch(bigSingleImg(image))
+    }
+
+}
+
 
 export const createPost = (imgInfo) => async(dispatch) => {
     // const { userId, imageUrl, content, sport } = imgInfo;
@@ -75,7 +95,10 @@ const imagesReducer = (state = initialState, action) => {
             action.images.forEach((img) => {
                 newState[img.id] = img;
             })
-            return {...state, ...newState}
+            return {...state, ...newState};
+        case GET_IMG:
+            newState[action.image.id] = action.image
+            return {...state, ...newState};
         case ADD_IMAGE:
             newState = {...state, [action.img.id]: action.img}
             return newState;

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from './components/HomePage'
 import MainPage from './components/MainPage'
 import PostForm from './components/PostForm'
+import BigSinglePost from './components/BigSinglePost';
 
 function App() {
   const dispatch = useDispatch()
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path="/addPhoto">
               <PostForm />
+            </Route>
+            <Route path="/images/:id">
+              <BigSinglePost />
             </Route>
         </Switch>
         )}

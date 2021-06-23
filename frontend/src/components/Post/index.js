@@ -1,5 +1,5 @@
 import "./Post.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { delPost, editPost } from '../../store/images'
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
@@ -68,8 +68,25 @@ function EditPostForm ({img}) {
 export default function Post ({ img }) {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    const [showForm, setForm] = useState(false)
+    // const [showForm, setForm] = useState(false)
+    const [showMenu, setShowMenu] = useState(false);
 
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
 
     const delImg = (e) => {
@@ -81,19 +98,27 @@ export default function Post ({ img }) {
     return (
         <div className="singlePost">
             <div className="post__top">
-                <p>{img.userId}</p>
+                <p>{img.User.username}</p>
                 {sessionUser.id === img.userId &&
-                    <div className="post__editDelbtns">
-                        <button type="submit" onClick={delImg} className="post__del">Delete</button>
-                        <EditPostForm img={img}/>
-                    </div>
+                <div>
+                    <button onClick={openMenu}>
+                    <i className="fas fa-ellipsis-v"></i>
+                    </button>
+                    {showMenu && (
+                        <div className="post__editDelbtns">
+                            <button type="submit" onClick={delImg} className="post__del">Delete</button>
+                            <EditPostForm img={img}/>
+                        </div>
+                    )}
+                </div>
                     }
-
             </div>
-            <img src={img.imageUrl} className="post__image"/>
-            <div className="post__sportTitle">
-                <h4>{img.sport}</h4>
-            </div>
+            <a href={`/images/${img.id}`}>
+                <img src={img.imageUrl} className="post__image"/>
+                <div className="post__sportTitle">
+                    <h4>{img.sport}</h4>
+                </div>
+            </a>
             <div className="post__content">
                 <p>{img.content}</p>
             </div>

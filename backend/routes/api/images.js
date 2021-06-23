@@ -4,14 +4,24 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser } = require("../../utils/auth")
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const { image, User } = require("../../db/models")
+const { image, User, comment } = require("../../db/models")
 
 const router = express.Router();
 
+
 router.get("/", asyncHandler(async(req, res) => {
-    const imgs = await image.findAll()
+    const imgs = await image.findAll({include: [ User ]})
 
     return res.json(imgs)
+}))
+
+router.get("/:id", asyncHandler(async(req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const img = await image.findByPk(id, {
+        include: comment
+    })
+
+    return res.json(img)
 }))
 
 router.post("/", asyncHandler(async(req, res) => {
