@@ -29,28 +29,36 @@ function EditPostForm ({img}) {
                     <ul>
                         {errors.map((err, i) => <li key={i}>{err}</li>)}
                     </ul>
-                    <label /> Image Url
+                    <div className="editPost__labels">
+                        <label /> Image Url
+                    </div>
                         <input className="edit__input"
                         type="text"
                         required
                         value={imageUrl}
                         onChange={e => setImageUrl(e.target.value)}
                         />
-                    <label /> content
+                    <div className="editPost__labels">
+                        <label /> content
+                    </div>
                         <textarea className="edit__textarea"
                         type="text"
                         required
                         value={content}
                         onChange={e => setContent(e.target.value)}
                         />
-                    <label /> sport/title
+                        <div className="editPost__labels">
+                            <label /> sport/title
+                        </div>
                         <input className="edit__input"
                         type="text"
                         required
                         value={sport}
                         onChange={e => setSport(e.target.value)}
                         />
+                        <div className="edit__btndiv">
                     <button type="submit" className="edit__btn">Edit Post</button>
+                        </div>
                 </form>
             </div>
     )
