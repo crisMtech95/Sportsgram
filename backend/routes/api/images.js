@@ -18,7 +18,7 @@ router.get("/", asyncHandler(async(req, res) => {
 router.get("/:id", asyncHandler(async(req, res) => {
     const id = parseInt(req.params.id, 10);
     const img = await image.findByPk(id, {
-        include: comment
+        include: [comment, User],
     })
 
     return res.json(img)

@@ -8,7 +8,6 @@ export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
     const allImages = useSelector((state) => Object.values(state.images))
     const image = allImages[0];
-    console.log(image)
     const { id } = useParams()
     const dispatch = useDispatch();
 

@@ -1,8 +1,10 @@
 import "./Post.css"
 import { useState, useEffect } from "react"
+import { Redirect, useHistory } from "react-router-dom"
 import { delPost, editPost } from '../../store/images'
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { addComment } from '../../store/comments'
 
 function EditPostForm ({img}) {
     const sessionUser = useSelector(state => state.session.user)
@@ -68,8 +70,9 @@ function EditPostForm ({img}) {
 export default function Post ({ img }) {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    // const [showForm, setForm] = useState(false)
     const [showMenu, setShowMenu] = useState(false);
+    const [comment, setComment] = useState("")
+    const history = useHistory()
 
   const openMenu = () => {
     if (showMenu) return;
@@ -94,11 +97,17 @@ export default function Post ({ img }) {
         dispatch(delPost(img))
     }
 
+    const commentSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addComment({comment, imageId: img.id, userId: sessionUser.id}))
+        history.push(`/images/${img.id}`)
+    }
+
 
     return (
         <div className="singlePost">
             <div className="post__top">
-                <p>{img.User.username}</p>
+                <p>{img?.User?.username}</p>
                 {sessionUser.id === img.userId &&
                 <div>
                     <button onClick={openMenu}>
@@ -123,9 +132,13 @@ export default function Post ({ img }) {
                 <p>{img.content}</p>
             </div>
             <div className="post__comment">
-                <form className="post__commentForm">
                     <img />
-                    <textarea placeholder="Add a Comment"/>
+                <form className="post__commentForm" onSubmit={commentSubmit}>
+                    <textarea
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Add a Comment"
+                    />
                     <button type="submit">Post</button>
                 </form>
             </div>

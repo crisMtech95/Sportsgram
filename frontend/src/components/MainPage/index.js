@@ -21,11 +21,6 @@ export default function MainPage () {
     return (
         <div className="bigContainer">
             <div className="postContainer">
-                {/* {allImages.map((img) =>
-                    <div key={img.id}>
-                        <img src={img.imageUrl} />
-                    </div>
-                )} */}
                 {allImages.map(img => (
                     <Post key={img.id} img={img}/>
                 ))}
