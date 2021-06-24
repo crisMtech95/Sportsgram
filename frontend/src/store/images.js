@@ -70,7 +70,8 @@ export const delPost = (img) => async(dispatch) => {
         method: "DELETE",
         body: JSON.stringify(img)
     })
-    dispatch(delImage(img))
+    const data = await res.json()
+    dispatch(delImage(data))
 
 }
 

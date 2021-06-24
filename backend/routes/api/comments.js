@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/", asyncHandler(async(req, res) => {
     const {  comment, imageId, userId } = req.body;
-    const newComment = await c.create({ comment, imageId, userId })
+     await c.create({ comment, imageId, userId })
 }))
 
 

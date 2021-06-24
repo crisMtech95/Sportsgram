@@ -1,9 +1,62 @@
-.SinglePost__mainContainer {
+.singlePost__mainContainer {
     position: relative;
     width: 100%;
     color:black;
-    display: flex;
+    /* display: flex;
+    flex-direction: column; */
     justify-content: space-evenly;
     flex-direction: row;
-    margin-top: 80px;
+    font-family: "Proxima Nova",helvetica,arial,sans-serif;
+}
+
+.singleImage__container {
+    width: 100%;
+    padding-top: 110px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #212124;
+}
+
+.singlePost__image {
+    width: 600px;
+}
+.singlePost__imgTag {
+    width: 100%;
+    object-fit: contain;
+}
+.singpost__userLogo {
+    width:69px;
+    height:69px;
+    border-radius: 100%;
+    background-image: url("https://source.unsplash.com/random/300x200");
+    background-size: contain;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+.singlePost__userInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    font-family: "Proxima Nova",helvetica,arial,sans-serif;
+};
+
+
+.singlePost__contentBigContainer {
+    widows: 100%;
+    margin-bottom: 70px;
+    border: 1px solid grey;
+
+}
+.singlePost__contentContainer {
+    margin-left: 110px;
+    width: 70%;
+}
+.singlePost__title {
+    margin: 0px;
 }
