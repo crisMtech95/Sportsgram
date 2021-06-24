@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../store/images'
+import EditComment from '../EditComment'
 
 export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
@@ -41,7 +42,7 @@ export default function BigSinglePost () {
                         <div key={comment.id} className="singlePost__comment">
                             <p>{comment?.comment}</p>
                             <button>Delete</button>
-                            <button>Edit</button>
+                            <EditComment comment={comment}/>
                         </div>
                     ))}
                 </div>

@@ -14,6 +14,11 @@ router.post("/", asyncHandler(async(req, res) => {
      await c.create({ comment, imageId, userId })
 }))
 
+router.patch("/", asyncHandler(async(req, res) => {
+    const {  comment } = req.body;
+     await c.update({ comment })
+}))
+
 
 
 

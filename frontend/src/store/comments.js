@@ -26,6 +26,15 @@ export const addComment = (commentInfo) => async(dispatch) => {
     dispatch(postComment(data))
     return data;
 }
+export const editComment = (commentInfo) => async(dispatch) => {
+    const res = await csrfFetch("/api/comments", {
+        method: "PATCH",
+        body: JSON.stringify(commentInfo)
+    })
+    const data = await res.json();
+    dispatch(postComment(data))
+    return data;
+}
 
 const initialState = {}
 
