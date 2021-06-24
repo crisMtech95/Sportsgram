@@ -1,0 +1,41 @@
+/************** EditComponent inside the post component ***************/
+
+
+.mainEdit__container {
+    position: absolute;
+    width: 300px;
+    font-weight: 800;
+    border: 0.6px solid rgb(170, 168, 168);
+    border-radius: 5px;
+    right: 0px;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    /* background-color: rgba(21, 21, 23, 0.8); */
+    background: linear-gradient(0.25turn, #3082a5, #070806, #140b0d);
+    /* background-color: rgba(255, 255, 255, 0.8);
+    color: black; */
+}
+.edit__input {
+    width: 98%;
+    border: none;
+}
+.edit__textarea {
+    width: 98%;
+    border: none;
+    resize: none;
+}
+.edit__btndiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+}
+.editPost__labels {
+    display: flex;
+    justify-content: center;
+}
+.edit__btn {
+    background-color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 800;
+    border-radius: 5px;
+}
