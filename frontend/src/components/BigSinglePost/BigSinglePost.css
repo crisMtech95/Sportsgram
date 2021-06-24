@@ -60,3 +60,7 @@
 .singlePost__title {
     margin: 0px;
 }
+
+.singlePost__comment {
+    position: relative;
+}

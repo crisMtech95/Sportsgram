@@ -7,11 +7,10 @@ import EditComment from '../EditComment'
 
 export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
-    const allImages = useSelector((state) => Object.values(state.images))
-    const image = allImages[0];
+    const allImages = useSelector((state) => state.images)
     const { id } = useParams()
+    const image = allImages[id];
     const dispatch = useDispatch();
-    // console.log(image)
 
     useEffect(() => {
         dispatch(getSinglePost(id))
