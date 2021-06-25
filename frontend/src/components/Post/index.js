@@ -15,20 +15,20 @@ export default function Post ({ img }) {
     const history = useHistory()
 
   const openMenu = () => {
-    if (showMenu) return;
+    // if (showMenu) return;
     setShowMenu(true);
   };
 
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
   useEffect(() => {
-    if (!showMenu) return;
+    // if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
 
-    document.addEventListener('click', closeMenu);
+    // document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
+    // return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
 
@@ -50,7 +50,7 @@ export default function Post ({ img }) {
                 <p>{img?.User?.username}</p>
                 {sessionUser.id === img.userId &&
                 <div>
-                    <button onClick={openMenu}>
+                    <button onClick={!showMenu ? openMenu : closeMenu }>
                     <i alt="you'll never know" className="fas fa-ellipsis-v"></i>
                     </button>
                     {showMenu && (

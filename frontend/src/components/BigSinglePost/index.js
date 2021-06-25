@@ -11,7 +11,7 @@ export default function BigSinglePost () {
     const allImages = useSelector((state) => state.images)
     const { id } = useParams()
     const image = allImages[id];
-    const allComments = useSelector(state => state.images[id]?.comments)
+    // const allComments = useSelector(state => state.images[id]?.comments)
     // console.log("YEAH THAT RIGHT",allComments)
     const dispatch = useDispatch();
 
@@ -19,9 +19,9 @@ export default function BigSinglePost () {
         dispatch(getSinglePost(id))
     }, [dispatch, id])
 
-    useEffect(() => {
-         dispatch(getComments(allComments))
-    }, [dispatch, allComments])
+    // useEffect(() => {
+    //      dispatch(getComments(allComments))
+    // }, [dispatch, allComments])
 
     return (
         <div className="singlePost__mainContainer">
