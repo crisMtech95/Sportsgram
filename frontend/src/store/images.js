@@ -27,10 +27,10 @@ export const postImage = img => {
         img,
     }
 }
-export const delImage = id => {
+export const delImage = img => {
     return {
         type: DEL_IMAGE,
-        id,
+        img,
     }
 }
 
@@ -72,7 +72,7 @@ export const delPost = (img) => async(dispatch) => {
     const data = await res.json()
     console.log("RES FROM THE FETCH", res)
     console.log("RES FROM THE JSON", data)
-    dispatch(delImage(data))
+    dispatch(delImage(img))
 
 }
 
@@ -106,7 +106,7 @@ const imagesReducer = (state = initialState, action) => {
             return newState;
         case DEL_IMAGE:
             newState = {...state}
-            delete newState[action.id]
+            delete newState[action.img.id]
             return newState;
         default:
             return state;
