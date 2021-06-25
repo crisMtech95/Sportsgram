@@ -59,7 +59,10 @@ export default function commentsReducer (state = initialState, action) {
     let newState = {};
     switch(action.type) {
         case GET__COMMENTS:
-            newState = { ...state, ...action.comments}
+            action?.comments?.forEach(co => {
+                newState[co.id] = co
+            })
+            // newState = { ...state, ...action.comments}
             return newState;
         case ADD__COMMENT:
             newState = {...state, [action.commentInfo.id]: action.commentInfo}

@@ -17,7 +17,7 @@ export default function BigSinglePost () {
 
     useEffect(() => {
         dispatch(getSinglePost(id))
-    }, [dispatch])
+    }, [dispatch, id])
 
     useEffect(() => {
          dispatch(getComments(allComments))
@@ -27,7 +27,7 @@ export default function BigSinglePost () {
         <div className="singlePost__mainContainer">
             <div className="singleImage__container">
                 <div className="singlePost__image">
-                    <img src={image?.imageUrl} className="singlePost__imgTag"/>
+                    <img src={image?.imageUrl} alt="You'll never know" className="singlePost__imgTag"/>
                 </div>
             </div>
             <div className="singlePost__userInfo">

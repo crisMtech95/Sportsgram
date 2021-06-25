@@ -1,9 +1,9 @@
 import "./Post.css"
 import { useState, useEffect } from "react"
-import { Redirect, useHistory } from "react-router-dom"
-import { delPost, editPost } from '../../store/images'
+import { useHistory } from "react-router-dom"
+import { delPost } from '../../store/images'
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 import { addComment } from '../../store/comments'
 import EditPostForm from '../EditPostForm'
 
@@ -51,7 +51,7 @@ export default function Post ({ img }) {
                 {sessionUser.id === img.userId &&
                 <div>
                     <button onClick={openMenu}>
-                    <i className="fas fa-ellipsis-v"></i>
+                    <i alt="you'll never know" className="fas fa-ellipsis-v"></i>
                     </button>
                     {showMenu && (
                         <div className="post__editDelbtns">
@@ -63,7 +63,7 @@ export default function Post ({ img }) {
                     }
             </div>
             <a href={`/images/${img.id}`}>
-                <img src={img.imageUrl} className="post__image"/>
+                <img alt="you'll never know"  src={img.imageUrl} className="post__image"/>
                 <div className="post__sportTitle">
                     <h4>{img.sport}</h4>
                 </div>
@@ -72,7 +72,9 @@ export default function Post ({ img }) {
                 <p>{img.content}</p>
             </div>
             <div className="post__comment">
-                    <img />
+                    <div className="post__commentSmileyContainer">
+                        <div className="post__commentSmiley"/>
+                    </div>
                 <form className="post__commentForm" onSubmit={commentSubmit}>
                     <textarea
                     value={comment}

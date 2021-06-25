@@ -1,11 +1,11 @@
 import "./EditComment.css"
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { editComment } from "../../store/comments"
 
 
 export default function EditComment ({ co }) {
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)//IMPORT USselector
     const [comment, setComment] = useState(co.comment)
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()

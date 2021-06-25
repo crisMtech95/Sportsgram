@@ -28,30 +28,52 @@
 }
 .post__comment {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 47px;
     bottom: 0px;
 }
+.post__commentSmileyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37px;
+    height: 35px;
+    position: absolute;
+    bottom: 1px;
+    /* border-top: 0.5px solid rgb(128, 128, 128); */
+}
+.post__commentSmiley {
+    width: 31px;
+    height: 31px;
+    background-image: url("../../homepageImg/smile.png");
+    background-size: contain;
+}
+
 .post__commentForm {
     position:absolute;
     bottom: 0;
-    width: 95%;
+    right: 0;
+    width: 93%;
     height: 37px;
     display: flex;
     justify-content: space-between;
 }
-
+.post__comment {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 0.5px solid rgb(128, 128, 128);
+    height: 37px
+}
 .post__commentForm textarea {
     width: 95%;
     border: none;
-    border-top: 0.5px solid grey;
     resize: none;
     outline: white;
     font-size: 18px;
 }
 .post__commentForm button {
     border: none;
-    border-top: 0.5px solid grey;
 }
 
 .mainContainer {
