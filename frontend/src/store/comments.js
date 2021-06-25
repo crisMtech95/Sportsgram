@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 
+const GET__COMMENTS = "get/comments"
 const ADD__COMMENT = "add/comment"
 const DEL__COMMENT = "del/comment"
 
@@ -14,6 +15,13 @@ export const delComment = (id) => {
     return {
         type: DEL__COMMENT,
         id
+    }
+}
+
+export const getComments = comments => {
+    return {
+        type: GET__COMMENTS,
+        comments
     }
 }
 
@@ -50,6 +58,9 @@ const initialState = {}
 export default function commentsReducer (state = initialState, action) {
     let newState = {};
     switch(action.type) {
+        case GET__COMMENTS:
+            newState = { ...state, ...action.comments}
+            return newState;
         case ADD__COMMENT:
             newState = {...state, [action.commentInfo.id]: action.commentInfo}
             return newState;
