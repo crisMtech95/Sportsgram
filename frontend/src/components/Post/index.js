@@ -15,22 +15,12 @@ export default function Post ({ img }) {
     const history = useHistory()
 
   const openMenu = () => {
-    // if (showMenu) return;
     setShowMenu(true);
   };
 
   const closeMenu = () => {
     setShowMenu(false);
   };
-  useEffect(() => {
-    // if (!showMenu) return;
-
-
-    // document.addEventListener('click', closeMenu);
-
-    // return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
-
 
     const delImg = (e) => {
         e.preventDefault()
