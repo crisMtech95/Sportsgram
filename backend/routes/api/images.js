@@ -37,11 +37,17 @@ router.post("/", asyncHandler(async(req, res) => {
 
 router.delete("/", asyncHandler(async(req, res) => {
     const { id } = req.body
+    await comment.destroy({
+        where: {
+            imageId: id
+        }
+    })
     await image.destroy({
         where: {
           id
-        }
+        },
       });
+      
 }))
 
 router.put("/", asyncHandler(async(req, res) => {

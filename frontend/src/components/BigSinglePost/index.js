@@ -40,8 +40,13 @@ export default function BigSinglePost () {
                     {image?.comments?.map(comment => (
                         <div key={comment.id} className="singlePost__comment">
                             <p>{comment?.comment}</p>
-                            <button>Delete</button>
-                            <EditComment comment={comment}/>
+                            {sessionUser.id === comment.userId &&
+                            <div>
+                                <button>Delete</button>
+                                <EditComment co={comment}/>
+                            </div>
+                            }
+
                         </div>
                     ))}
                 </div>

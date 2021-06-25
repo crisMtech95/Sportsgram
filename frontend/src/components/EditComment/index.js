@@ -1,24 +1,26 @@
 import "./EditComment.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { editComment } from "../../store/comments"
 
 
-export default function EditComment ({ comment }) {
+export default function EditComment ({ co }) {
     const sessionUser = useSelector(state => state.session.user)
-    const [co, setComment] = useState(comment.comment)
+    const [comment, setComment] = useState(co.comment)
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(comment.id)
-         dispatch(editComment({co, id: comment.id}));
+         dispatch(editComment({comment, id: co.id}));
                     // .catch(async (res) => {
                     // const data = await res.json()
                     // if (data && data.errors) setErrors(data.errors)
         // })
     }
+    useEffect(()=> {
+        console.log("YOU ARE HITTING THIS")
+    }, [comment])
 
     return (
             <div className="mainEditComment__container">
@@ -32,7 +34,7 @@ export default function EditComment ({ comment }) {
                         <textarea className="edit__textarea"
                         type="text"
                         required
-                        value={co}
+                        value={comment}
                         onChange={e => setComment(e.target.value)}
                         />
                     <button type="submit" className="edit__btn">Edit Post</button>
