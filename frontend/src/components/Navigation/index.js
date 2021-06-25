@@ -28,7 +28,7 @@ function Navigation({ isLoaded }){
             <input type="text" placeholder="Photos,athletes,people"/>
           </div>
           <div className="navbar__userIcon">
-            <NavLink to="/addPhoto" >Post Photo</NavLink>
+            <NavLink to="/addPhoto"><div className="navbar__uploadIcon"></div></NavLink>
             {isLoaded && sessionLinks}
           </div>
     </div>

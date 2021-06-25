@@ -47,7 +47,7 @@ router.delete("/", asyncHandler(async(req, res) => {
           id
         },
       });
-     return res.json(response);
+     res.json(response);
 }))
 
 router.put("/", asyncHandler(async(req, res) => {

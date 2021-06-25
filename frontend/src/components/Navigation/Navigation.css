@@ -9,7 +9,7 @@
     display: flex;
 }
 
- 
+
 .navbar__homepage {
     width: 200px;
     text-decoration: none;
@@ -31,11 +31,12 @@
 }
 
 .navbar__userIcon {
-    width: 170px;
+    width: 180px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+
 }
 .navbar__userIcon > button{
     width: 33px;
@@ -57,6 +58,14 @@
     border: none;
     /* background-color: rgba(255,255,255,0.5); */
     outline: white;
+}
+.navbar__uploadIcon {
+    width: 35px;
+    height: 35px;
+    background-image: url("../../homepageImg/upload0.png");
+    background-repeat: no-repeat ;
+    filter: invert(1);
+    background-size: contain;
 }
 
 .navbar__userbtns {
