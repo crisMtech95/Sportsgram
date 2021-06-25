@@ -23,7 +23,13 @@ router.patch("/", asyncHandler(async(req, res) => {
 }))
 
 
-
+router.delete("/", asyncHandler(async(req, res) => {
+    const { id } = req.body;
+    const response = await c.destroy({
+        where: { id }
+    })
+    return res.json(response)
+}))
 
 
 

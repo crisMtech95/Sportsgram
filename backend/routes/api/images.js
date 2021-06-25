@@ -42,12 +42,12 @@ router.delete("/", asyncHandler(async(req, res) => {
             imageId: id
         }
     })
-    await image.destroy({
+    const response = await image.destroy({
         where: {
           id
         },
       });
-      
+     return res.json(response);
 }))
 
 router.put("/", asyncHandler(async(req, res) => {

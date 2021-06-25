@@ -27,10 +27,10 @@ export const postImage = img => {
         img,
     }
 }
-export const delImage = image => {
+export const delImage = id => {
     return {
         type: DEL_IMAGE,
-        image,
+        id,
     }
 }
 
@@ -47,7 +47,6 @@ export const getSinglePost = (id) => async(dispatch) => {
     const res = await fetch(`/api/images/${id}`)
     if(res.ok) {
         const image = await res.json();
-        console.log(image)
         dispatch(bigSingleImg(image))
     }
 
@@ -71,6 +70,8 @@ export const delPost = (img) => async(dispatch) => {
         body: JSON.stringify(img)
     })
     const data = await res.json()
+    console.log("RES FROM THE FETCH", res)
+    console.log("RES FROM THE JSON", data)
     dispatch(delImage(data))
 
 }
@@ -105,7 +106,7 @@ const imagesReducer = (state = initialState, action) => {
             return newState;
         case DEL_IMAGE:
             newState = {...state}
-            delete newState.images[action.image.id]
+            delete newState[action.id]
             return newState;
         default:
             return state;

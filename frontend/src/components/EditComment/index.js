@@ -1,5 +1,5 @@
 import "./EditComment.css"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { editComment } from "../../store/comments"
 
@@ -18,9 +18,6 @@ export default function EditComment ({ co }) {
                     // if (data && data.errors) setErrors(data.errors)
         // })
     }
-    useEffect(()=> {
-        console.log("YOU ARE HITTING THIS")
-    }, [comment])
 
     return (
             <div className="mainEditComment__container">

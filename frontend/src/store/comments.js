@@ -10,10 +10,10 @@ export const postComment = (commentInfo) => {
     }
 }
 
-export const delComment = (commentInfo) => {
+export const delComment = (id) => {
     return {
         type: DEL__COMMENT,
-        commentInfo
+        id
     }
 }
 
@@ -36,6 +36,15 @@ export const editComment = (commentInfo) => async(dispatch) => {
     return data;
 }
 
+export const delCom = (id) => async(dispatch) => {
+    const res = await csrfFetch("/api/comments", {
+        method: "DELETE",
+        body: JSON.stringify({id})
+    })
+    const data = await res.json()
+    dispatch(delComment(data))
+}
+
 const initialState = {}
 
 export default function commentsReducer (state = initialState, action) {
@@ -43,6 +52,10 @@ export default function commentsReducer (state = initialState, action) {
     switch(action.type) {
         case ADD__COMMENT:
             newState = {...state, [action.commentInfo.id]: action.commentInfo}
+            return newState;
+        case DEL__COMMENT:
+            newState = {...state};
+            delete newState[action.id]
             return newState;
         default:
             return state;

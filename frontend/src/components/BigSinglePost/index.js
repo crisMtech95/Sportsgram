@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../store/images'
 import EditComment from '../EditComment'
+import { delCom } from '../../store/comments'
 
 export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
@@ -15,6 +16,10 @@ export default function BigSinglePost () {
     useEffect(() => {
         dispatch(getSinglePost(id))
     }, [dispatch])
+
+
+        dispatch(delCom())
+
 
     return (
         <div className="singlePost__mainContainer">
@@ -42,7 +47,7 @@ export default function BigSinglePost () {
                             <p>{comment?.comment}</p>
                             {sessionUser.id === comment.userId &&
                             <div>
-                                <button>Delete</button>
+                                <button type="submit" onClick={() => dispatch(delCom(comment.id))}>Delete</button>
                                 <EditComment co={comment}/>
                             </div>
                             }
