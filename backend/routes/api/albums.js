@@ -11,7 +11,10 @@ const router = express.Router();
 
 router.get("/:id", asyncHandler(async(req, res) => {
     const { id } = req.params
-    const albums = await album.findAll({ where: { userId: id}})
+    const albums = await album.findAll({
+        where: { userId: id},
+        include: [image]
+    })
     return res.json(albums)
 }))
 
