@@ -9,6 +9,7 @@ import HomePage from './components/HomePage'
 import MainPage from './components/MainPage'
 import PostForm from './components/PostForm'
 import BigSinglePost from './components/BigSinglePost';
+import Profile from './components/Profile';
 
 function App() {
   const dispatch = useDispatch()
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path="/images/:id">
               <BigSinglePost />
+            </Route>
+            <Route path="/profile/:id">
+              <Profile />
             </Route>
         </Switch>
         )}

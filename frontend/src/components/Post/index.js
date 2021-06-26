@@ -37,10 +37,12 @@ export default function Post ({ img }) {
     return (
         <div className="singlePost">
             <div className="post__top">
-                <div className="postTop__userName">
-                   <div className="postTop__postIconletterDiv"><div className="postIconletter">{img?.User?.username[0]}</div></div>
-                   <div className="postTop__pDiv"><p className="postTop__p">{img?.User?.username}</p></div>
-                </div>
+                <a href={`/profile/${img.userId}`} className="postTop__Atag">
+                    <div className="postTop__userName">
+                        <div className="postTop__postIconletterDiv"><div className="postIconletter">{img?.User?.username[0]}</div></div>
+                        <div className="postTop__pDiv"><p className="postTop__p">{img?.User?.username}</p></div>
+                    </div>
+                </a>
                 {sessionUser.id === img.userId &&
                 <div className="post__toggleBtn">
                     <button onClick={!showMenu ? openMenu : closeMenu } className="post__3dotsBtn">
