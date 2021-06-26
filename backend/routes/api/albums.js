@@ -9,8 +9,8 @@ const { image, User, album, comment : c } = require("../../db/models")
 const router = express.Router();
 
 
-router.get("/profile", asyncHandler(async(req, res) => {
-    const { id } = req.body
+router.get("/:id", asyncHandler(async(req, res) => {
+    const { id } = req.params
     const albums = await album.findAll({ where: { userId: id}})
     return res.json(albums)
 }))
