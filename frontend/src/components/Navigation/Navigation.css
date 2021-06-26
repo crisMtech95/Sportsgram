@@ -26,12 +26,11 @@
 
 .navbar__userinfo {
     display: flex;
-
     width: 207px;
 }
 
 .navbar__userIcon {
-    width: 180px;
+    width: 240px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,6 +41,15 @@
     width: 33px;
     height: 33px;
     border-radius: 100%;
+}
+
+.navbar__profileIcon {
+    background-image: url("../../homepageImg/user5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+    width: 35px;
+    height: 35px;
 }
 
 .navbar__search {
@@ -66,6 +74,12 @@
     background-repeat: no-repeat ;
     filter: invert(1);
     background-size: contain;
+}
+
+.navbar__profileBtn {
+    border: none;
+    background-color: transparent;
+    margin-right: 15px;
 }
 
 .navbar__userbtns {

@@ -1,7 +1,14 @@
+.postContainer {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .singlePost {
     position: relative;
-    width:600px;
-    height: 600px;
+    width:500px;
+    height:600px;
     color:black;
     background-color: white;
     border-radius: 4px;
@@ -91,9 +98,42 @@
 }
 
 .post__del {
+    position: absolute;
+    right: 0;
+    top: 207px;
     background-color: white;
     font-weight: 800;
     font-family:'Times New Roman', Times, serif;
     border-radius: 5px;
     border: 0.6px solid rgb(170, 168, 168);
+}
+
+.post__toggleBtn {
+    height: 45px;
+    width:32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.post__3dotsIcon {
+    background-image: url("../../homepageImg/3dots.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(30%);
+    width: 21px;
+    height: 21px;
+    margin: 0;
+    padding: 0;
+
+}
+.post__3dotsBtn {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
 }

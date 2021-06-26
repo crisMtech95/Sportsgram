@@ -39,14 +39,14 @@ export default function Post ({ img }) {
             <div className="post__top">
                 <p>{img?.User?.username}</p>
                 {sessionUser.id === img.userId &&
-                <div>
-                    <button onClick={!showMenu ? openMenu : closeMenu }>
-                    <i alt="you'll never know" className="fas fa-ellipsis-v"></i>
+                <div className="post__toggleBtn">
+                    <button onClick={!showMenu ? openMenu : closeMenu } className="post__3dotsBtn">
+                    <div alt="you'll never know" className="post__3dotsIcon"></div>
                     </button>
                     {showMenu && (
                         <div className="post__editDelbtns">
-                            <button type="submit" onClick={delImg} className="post__del">Delete</button>
                             <EditPostForm img={img}/>
+                            <button type="submit" onClick={delImg} className="post__del">Delete</button>
                         </div>
                     )}
                 </div>

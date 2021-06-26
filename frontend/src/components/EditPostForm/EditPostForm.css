@@ -3,11 +3,12 @@
 
 .mainEdit__container {
     position: absolute;
-    width: 300px;
+    width: 500px;
     font-weight: 800;
     border: 0.6px solid rgb(170, 168, 168);
     border-radius: 5px;
     right: 0px;
+    top: 50px;
     color: white;
     font-family:'Times New Roman', Times, serif;
     /* background-color: rgba(21, 21, 23, 0.8); */
