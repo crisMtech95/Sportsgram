@@ -33,7 +33,7 @@ export default function BigSinglePost () {
             <div className="singlePost__userInfo">
                 <div className="singpost__userLogo"></div>
                 <h1 className="singpost__username">{image?.User?.username}</h1>
-                <div className="singpost__follow">+ Follow</div>
+                <button id="singpost__followBtn">+ Follow</button>
             </div>
             <div className="singlePost__contentBigContainer">
                 <div className="singlePost__contentContainer">

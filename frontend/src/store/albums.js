@@ -13,10 +13,7 @@ export const getAlbums = (albums) => {
 export const getAlbumsThunk = (id) => async(dispatch) => {
     const res = await fetch(`/api/albums/${id}`)
     if (res.ok) {
-
         const albums = await res.json()
-        console.log("THIS IS THE RES", res)
-        console.log("THIS IS THE ALBUMS", albums)
         dispatch(getAlbums(albums))
     }
 }

@@ -43,19 +43,24 @@
     align-items: center;
     width: 100%;
     height: 80px;
-    font-family: "Proxima Nova",helvetica,arial,sans-serif;
+    /* font-family: "Proxima Nova" */
 };
-
+#singpost__followBtn {
+    background-color: #128fdc;
+    color: white;
+}
 
 .singlePost__contentBigContainer {
-    widows: 100%;
-    margin-bottom: 70px;
-    border: 1px solid grey;
+    width: 100%;
+    /* margin-bottom: 70px; */
+    padding-top: 20px;
+    border-top : 0.5px solid rgb(172, 158, 158);
 
 }
 .singlePost__contentContainer {
-    margin-left: 110px;
+    margin-left: 130px;
     width: 70%;
+
 }
 .singlePost__title {
     margin: 0px;
