@@ -4,16 +4,86 @@
 .profile__bigContainer {
     width: 100%
 }
-
+.profile__userStatsContainer {
+    background-color: white;
+}
 .profile__bgContainer {
     height: 400px;
 }
 .profile__userStatsContainer {
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .profile__bgContainer {
     width: 100%;
     background-image: url("https://source.unsplash.com/random/300x200");
     background-size: inherit;
     background-repeat:repeat;
+}
+.profile__userToggle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0;
+}
+.profile__userToggle > button{
+    border: none;
+    background-color: transparent;
+    color: rgb(122, 118, 118);
+}
+.profile__userToggle > button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.profile__mainPhotosContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile__photosContainer {
+    width: 90%;
+    position: relative;
+    column-count: 3;
+}
+@media screen and (max-width: 1300px) {
+      .profile__photosContainer {
+          column-count: 3
+      }
+}
+@media screen and (max-width: 1200px) {
+      .profile__photosContainer {
+          column-count: 2
+      }
+}
+@media screen and (max-width: 600px) {
+      .profile__photosContainer {
+          column-count: 1
+      }
+}
+.profile__postImageContainer {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+}
+.profile__postImage {
+    display: inline-block;
+    width: 100%;
+}
+.profile__AddAlbumBtn {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: 800px;
+    color: transparent;
+}
+.profile__postImageContainer:hover .profile__AddAlbumBtn {
+    color: white;
 }

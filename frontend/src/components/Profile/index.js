@@ -40,9 +40,10 @@ export default function Profile () {
                     <div className="profile__mainPhotosContainer">
                         <div className="profile__photosContainer">
                             {allPhotos && allPhotos.map(img => (
-                                <div key={img.id}>
+                                <div key={img.id} className="profile__postImageContainer">
                                     <a href={`/images/${img.id}`}>
-                                        <img alt="you'll never know"  src={img.imageUrl} className="post__image"/>
+                                            <img alt="you'll never know"  src={img.imageUrl} className="profile__postImage"/>
+                                            <button className="profile__AddAlbumBtn">Add to Album</button>
                                     </a>
                                 </div>
                             ))}
