@@ -14,6 +14,11 @@ router.get("/", asyncHandler(async(req, res) => {
 
     return res.json(imgs)
 }))
+router.get("/profile/:id", asyncHandler(async(req, res) => {
+    const { id } = req.params
+    const imgs = await image.findAll({ where: { userId: id}})
+    return res.json(imgs)
+}))
 
 router.get("/:id", asyncHandler(async(req, res) => {
     const id = parseInt(req.params.id, 10);
