@@ -11,9 +11,9 @@ const router = express.Router();
 
 router.get("/", asyncHandler(async(req, res) => {
     const imgs = await image.findAll({include: [ User ]})
-
     return res.json(imgs)
 }))
+
 router.get("/profile/:id", asyncHandler(async(req, res) => {
     const { id } = req.params
     const imgs = await image.findAll({ where: { userId: id}})
@@ -23,7 +23,7 @@ router.get("/profile/:id", asyncHandler(async(req, res) => {
 router.get("/:id", asyncHandler(async(req, res) => {
     const id = parseInt(req.params.id, 10);
     const img = await image.findByPk(id, {
-        include: [{model: comment, include: User}, User]
+        include: [User]
     })
     return res.json(img)
 }))

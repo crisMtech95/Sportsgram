@@ -8,6 +8,14 @@ const { image, User, comment : c} = require("../../db/models")
 
 const router = express.Router();
 
+router.get("/:id", asyncHandler(async(req, res) => {
+    const { id } = req.params
+    const comments = await c.findAll({
+        where: { imageId: id},
+        include: [ User ]
+    })
+    return res.json(comments)
+}))
 
 router.post("/", asyncHandler(async(req, res) => {
     const {  comment, imageId, userId } = req.body;

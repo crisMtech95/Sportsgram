@@ -1,7 +1,7 @@
 import "./EditComment.css"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { editComment } from "../../store/images"
+import { editComment } from "../../store/comments"
 
 
 export default function EditComment ({ co }) {

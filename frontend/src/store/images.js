@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const ADD__COMMENT = "edit/Comment"
+
 const GET_IMAGES = "get/images"
 const ADD_IMAGE = "add/image"
 const DEL_IMAGE = "del/image"
@@ -14,14 +14,6 @@ export const getImages = (images) => {
         images,
     }
 }
-
-export const postComment = (commentInfo) => {
-    return {
-        type: ADD__COMMENT,
-        commentInfo
-    }
-}
-
 
 export const bigSingleImg = (image) => {
     return {
@@ -81,17 +73,6 @@ export const createPost = (imgInfo) => async(dispatch) => {
     return data;
 }
 
-
-export const editComment = (commentInfo) => async(dispatch) => {
-    const res = await csrfFetch("/api/comments", {
-        method: "PATCH",
-        body: JSON.stringify(commentInfo)
-    })
-    const data = await res.json();
-    dispatch(postComment(data))
-    return data;
-}
-
 export const delPost = (img) => async(dispatch) => {
     const res = await csrfFetch("/api/images", {
         method: "DELETE",
@@ -126,16 +107,7 @@ const imagesReducer = (state = initialState, action) => {
                 newState[img.id] = img;
             })
             return {...state, ...newState};
-        case ADD__COMMENT:
-            let { imageId } = action.commentInfo
-            newState = {[imageId] : {...state[imageId], comments: state[imageId].comments.map(el => {
-                if (el.id === action.commentInfo.id) {
-                    return action.commentInfo
-                } else {
-                    return el
-                }
-            }) }}
-            return newState
+
         case GET_IMG:
             newState[action.image.id] = action.image
             return {...state, ...newState};

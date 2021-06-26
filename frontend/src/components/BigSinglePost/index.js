@@ -4,11 +4,12 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../store/images'
 import EditComment from '../EditComment'
-import { delCom, getComments } from '../../store/comments'
+import { delCom, getImageComments } from '../../store/comments'
 
 export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
     const allImages = useSelector((state) => state.images)
+    const allComments = useSelector((state) => Object.values(state.comments))
     const { id } = useParams()
     const image = allImages[id];
     // const allComments = useSelector(state => state.images[id]?.comments)
@@ -17,6 +18,7 @@ export default function BigSinglePost () {
 
     useEffect(() => {
         dispatch(getSinglePost(id))
+        dispatch(getImageComments(id))
     }, [dispatch, id])
 
     // useEffect(() => {
@@ -46,7 +48,7 @@ export default function BigSinglePost () {
             <div className="singlePost__commentsBigContainer">
                 <div className="singlePost__commentsContainer">
                 <h3>Comments</h3>
-                    {image?.comments?.map(comment => (
+                    {allComments?.map(comment => (
                         <div key={comment.id} className="singlePost__comment">
                             <p>{comment?.comment}</p>
                             {sessionUser.id === comment.userId &&
