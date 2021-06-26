@@ -1,0 +1,19 @@
+.profile__mainContainer {
+    width: 100%;
+}
+.profile__bigContainer {
+    width: 100%
+}
+
+.profile__bgContainer {
+    height: 400px;
+}
+.profile__userStatsContainer {
+    height: 50px;
+}
+.profile__bgContainer {
+    width: 100%;
+    background-image: url("https://source.unsplash.com/random/300x200");
+    background-size: inherit;
+    background-repeat:repeat;
+}
