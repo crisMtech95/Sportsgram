@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session'
 import imagesReducer from './images'
 import commentsReducer from './comments'
+import albumsReducer from './albums'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   images: imagesReducer,
   comments: commentsReducer,
+  albums: albumsReducer,
 });
 
 let enhancer;

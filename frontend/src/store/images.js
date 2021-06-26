@@ -61,6 +61,14 @@ export const getSinglePost = (id) => async(dispatch) => {
 
 }
 
+export const getProfileImages = (id) => async(dispatch) => {
+    const res = await fetch(`/api/images/profile/${id}`)
+    if (res.ok) {
+        const images = await res.json()
+        dispatch(getImages(images))
+    }
+}
+
 
 export const createPost = (imgInfo) => async(dispatch) => {
     // const { userId, imageUrl, content, sport } = imgInfo;
@@ -72,6 +80,7 @@ export const createPost = (imgInfo) => async(dispatch) => {
     dispatch(postImage(data))
     return data;
 }
+
 
 export const editComment = (commentInfo) => async(dispatch) => {
     const res = await csrfFetch("/api/comments", {
@@ -89,9 +98,9 @@ export const delPost = (img) => async(dispatch) => {
         body: JSON.stringify(img)
     })
     const data = await res.json()
-    console.log("RES FROM THE FETCH", res)
-    console.log("RES FROM THE JSON", data)
-    dispatch(delImage(img))
+    // console.log("RES FROM THE FETCH", res)
+    // console.log("RES FROM THE JSON", data)
+    dispatch(delImage(img.id))
 
 }
 
