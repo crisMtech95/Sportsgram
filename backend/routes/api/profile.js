@@ -14,6 +14,8 @@ router.get("/:id", asyncHandler(async(req, res) => {
     const imgs = await image.findAll({where: { userId: id }})
 
     return res.json(imgs)
+    // return res.json({imgs, albums})
+
 }))
 
 router.get("/:id", asyncHandler(async(req, res) => {
