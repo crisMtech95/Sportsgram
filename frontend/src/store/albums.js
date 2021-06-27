@@ -1,12 +1,18 @@
 import { csrfFetch } from "./csrf";
 
 const GET__USERALBUMS = "get/user/albums"
-
+const CREATE__ALBUM = "create/albums"
 
 export const getAlbums = (albums) => {
     return {
         type: GET__USERALBUMS,
         albums
+    }
+}
+export const addAlbum = album => {
+    return {
+        type: CREATE__ALBUM,
+        album
     }
 }
 
@@ -18,7 +24,17 @@ export const getAlbumsThunk = (id) => async(dispatch) => {
     }
 }
 
-
+export const createAlbumsThunk = (album) => async(dispatch) => {
+    const res = await csrfFetch("/api/albums", {
+        method: "POST",
+        body: JSON.stringify(album)
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(addAlbum(data))
+        return data
+    }
+}
 
 
 
@@ -33,7 +49,8 @@ const albumsReducer = (state = initialState, action) => {
                 newState[album.id] = album;
             })
             return {...state, ...newState}
-
+        case CREATE__ALBUM:
+            return {...state, [action.album.id] : action.album }
         default:
             return state;
     }

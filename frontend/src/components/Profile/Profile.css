@@ -114,13 +114,22 @@
     width: 800px;
     position: relative;
     background-color: white;
-    margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: flex;
     justify-content:space-around;
     align-items: center;
     flex-wrap: wrap;
+    border-radius: 5px;
     /* flex: 1 1; */
+}
+.profile__singleAlbumTitleDiv{
+    width: 100%;
+}
+.profile__singleAlbumTitle {
+    color: black;
+    left: 10px;
+    top: -12px;
+    margin: 0;
 }
 .profile__singleAlbumImgDiv {
     width: 370px;

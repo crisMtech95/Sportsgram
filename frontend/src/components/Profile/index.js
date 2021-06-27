@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { getProfileImages } from '../../store/images'
-import { getAlbumsThunk } from '../../store/albums'
+import { getAlbumsThunk, createAlbumsThunk } from '../../store/albums'
 
 export default function Profile () {
     const [showPhotos, setShowPhotos] = useState("albums");
@@ -22,7 +22,7 @@ export default function Profile () {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
+        dispatch(createAlbumsThunk({title, sport, userId: sessionUser.id}))
     }
     const openPhotos = () => {
         if (showPhotos === "photos") return;
@@ -45,7 +45,9 @@ export default function Profile () {
                     <div className="profile__userToggle">
                         <button onClick={openPhotos}>Photos</button>
                         <button onClick={openAlbums}>Albums</button>
+                        {sessionUser?.id === +id &&
                         <button onClick={openCreateAlbum}>Create an Album</button>
+                        }
                     </div>
                 </div>
 {/* This is for the photos */}
@@ -74,6 +76,9 @@ export default function Profile () {
                         </div>
                             {allAlbums && allAlbums.map(alb => (
                                 <div key={alb.id} className="profile__singleAlbum">
+                                    <div className="profile__singleAlbumTitleDiv">
+                                        <p className="profile__singleAlbumTitle">{alb.title}</p>
+                                    </div>
                                     <div className="profile__singleAlbumImgDiv">
                                         <img src={alb?.images[0]?.imageUrl} className="profile__singleAlbumImg"></img>
                                     </div>
@@ -100,14 +105,14 @@ export default function Profile () {
                                     {errors.map((err, i) => <li key={i}>{err}</li>)}
                                 </ul> */}
                                 <label /> Title
-                                    <textarea className=""
+                                    <input className=""
                                     type="text"
                                     required
                                     value={title}
                                     onChange={e => setTitle(e.target.value)}
                                     />
                                 <label /> Sport
-                                    <input className=""
+                                    <textarea className=""
                                     type="text"
                                     required
                                     value={sport}

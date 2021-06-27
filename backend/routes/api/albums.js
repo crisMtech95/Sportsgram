@@ -19,8 +19,8 @@ router.get("/:id", asyncHandler(async(req, res) => {
 }))
 
 router.post("/", asyncHandler(async(req, res) => {
-    const { title, sport } = req.body;
-    const newAlbum = await album.create({ title, sport})
+    const { title, sport, userId } = req.body;
+    const newAlbum = await album.create({ title, sport, userId})
     return res.json(newAlbum)
 }))
 
