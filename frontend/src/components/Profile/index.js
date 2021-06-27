@@ -7,16 +7,22 @@ import { getAlbumsThunk } from '../../store/albums'
 
 export default function Profile () {
     const [showPhotos, setShowPhotos] = useState("photos");
+    const [title, setTitle] = useState("");
+    const [sport, setSport] = useState("");
+    const sessionUser = useSelector(state => state.session.user)
     const allPhotos = useSelector(state => Object.values(state.images))
     const dispatch = useDispatch()
     const { id } = useParams()
-
 
     useEffect(() => {
         dispatch(getProfileImages(id))
         dispatch(getAlbumsThunk(id))
     }, [dispatch])
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+    }
     const openPhotos = () => {
         if (showPhotos === "photos") return;
         setShowPhotos("photos");
@@ -25,6 +31,10 @@ export default function Profile () {
         if (showPhotos === "albums") return;
         setShowPhotos("albums");
       };
+    const openCreateAlbum = () => {
+        if (showPhotos === "createAlbum") return;
+        setShowPhotos("createAlbum")
+    };
 
     return (
         <div className="profile__mainContainer">
@@ -34,9 +44,10 @@ export default function Profile () {
                     <div className="profile__userToggle">
                         <button onClick={openPhotos}>Photos</button>
                         <button onClick={openAlbums}>Albums</button>
-                        <button>Create an Album</button>
+                        <button onClick={openCreateAlbum}>Create an Album</button>
                     </div>
                 </div>
+{/* This is for the photos */}
                 {showPhotos === "photos" &&
                     <div className="profile__mainPhotosContainer">
                         <div className="profile__photosContainer">
@@ -44,17 +55,47 @@ export default function Profile () {
                                 <div key={img.id} className="profile__postImageContainer">
                                     <a href={`/images/${img.id}`}>
                                             <img alt="you'll never know"  src={img.imageUrl} className="profile__postImage"/>
-                                            <button className="profile__AddAlbumBtn">Add to Album</button>
                                     </a>
+                                {sessionUser?.id === img.userId &&
+                                    <button className="profile__AddAlbumBtn">Add to Album</button>
+                                }
                                 </div>
                             ))}
                         </div>
                     </div>
                 }
+{/* This is for the Albums */}
                 {showPhotos === "albums" &&
                     <div className="profile__mainAlbumsContainer">
                         <div className="profile__albumsContainer">
 
+                        </div>
+                    </div>
+                }
+{/* This is for the Crate Albums form */}
+                {showPhotos === "createAlbum" &&
+                    <div className="profile__mainCreateAlbumContainer">
+                        <div className="profile__createAlbumContainer">
+                            <form onSubmit={onSubmit} className="">
+                            {/* <ul>
+                                {errors.map((err, i) => <li key={i}>{err}</li>)}
+                            </ul> */}
+                            <label /> Title
+                                <textarea className=""
+                                type="text"
+                                required
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                                />
+                            <label /> Sport
+                                <input className=""
+                                type="text"
+                                required
+                                value={sport}
+                                onChange={e => setSport(e.target.value)}
+                                />
+                            <button type="submit" className="">Add Album</button>
+                            </form>
                         </div>
                     </div>
                 }

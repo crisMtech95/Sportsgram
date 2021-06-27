@@ -41,7 +41,7 @@ export default function BigSinglePost () {
 
                 <div className="singpost__followBtn">
                     <button className="singpost__followBtn"
-                        onClick={() => alert("Oops something went wrong!, please try again when we have a follow feature")}
+                        onClick={() => alert(sillyStr)}
                     >+   Follow</button>
                 </div>
             </div>
