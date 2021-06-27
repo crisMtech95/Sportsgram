@@ -28,6 +28,7 @@ export const postImage = img => {
         img,
     }
 }
+
 export const delImage = img => {
     return {
         type: DEL_IMAGE,
@@ -92,6 +93,18 @@ export const editPost = (img) => async(dispatch) => {
     })
     if(res.ok) {
         const data = await res.json()
+        dispatch(postImage(data))
+        return data
+    }
+}
+
+export const addImgToAlbum = img => async(dispatch) => {
+    const res = await csrfFetch("/api/images", {
+        method: "PATCH",
+        body: JSON.stringify(img)
+    })
+    if (res.ok) {
+        const data = await res.json();
         dispatch(postImage(data))
         return data
     }

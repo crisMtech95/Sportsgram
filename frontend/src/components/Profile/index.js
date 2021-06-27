@@ -2,7 +2,7 @@ import './Profile.css'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
-import { getProfileImages } from '../../store/images'
+import { getProfileImages, addImgToAlbum } from '../../store/images'
 import { getAlbumsThunk, createAlbumsThunk } from '../../store/albums'
 
 export default function Profile () {
@@ -28,7 +28,7 @@ export default function Profile () {
     }
     const submitAddToAlbum = (e) => {
         e.preventDefault()
-
+        dispatch(addImgToAlbum({}))
     }
     const openPhotos = () => {
         if (showPhotos === "photos") return;
@@ -51,9 +51,9 @@ export default function Profile () {
                     <div className="profile__userToggle">
                         <button onClick={openPhotos}>Photos</button>
                         <button onClick={openAlbums}>Albums</button>
-                        {/* {sessionUser?.id === +id &&
+                        {sessionUser?.id === +id &&
                         <button onClick={openCreateAlbum}>Create an Album</button>
-                        } */}
+                        }
                     </div>
                 </div>
 {/* This is for the photos */}
@@ -79,8 +79,7 @@ export default function Profile () {
                                                             <option key={album.id}>{album.title}</option>
                                                         ))}
                                                     </select>
-
-
+                                                    <button type="submit">Add</button>
                                                 </form>
                                             </div>
                                         }
