@@ -63,11 +63,12 @@ router.put("/", asyncHandler(async(req, res) => {
     await img.update({imageUrl, userId, content, sport})
     return res.json(img)
 }))
-// router.patch("/", asyncHandler(async(req, res) => {
-//     const {comment, id} = req.body;
-//     const result = await c.findByPk(id)
-//     const data = await result.update({comment})
-//     return res.json(data)
-//     //  await c.update({ comment }, {where: id})
-// }))
+router.patch("/", asyncHandler(async(req, res) => {
+    const { id, albumId } = req.body;
+    console.log("THIS IS THE ALBUMID", albumId)
+    const result = await image.findByPk(id)
+    const data = await result.update({albumId: albumId})
+    return res.json(data)
+}))
+
 module.exports = router;

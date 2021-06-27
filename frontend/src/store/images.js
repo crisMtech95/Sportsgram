@@ -99,12 +99,15 @@ export const editPost = (img) => async(dispatch) => {
 }
 
 export const addImgToAlbum = img => async(dispatch) => {
+    console.log("THIS IS THE IMAGE OBJ ON THE THUNK", img)
     const res = await csrfFetch("/api/images", {
         method: "PATCH",
         body: JSON.stringify(img)
     })
     if (res.ok) {
+        console.log("result form REST ", res)
         const data = await res.json();
+        console.log("result form DATA ", data)
         dispatch(postImage(data))
         return data
     }

@@ -13,7 +13,7 @@ export default function Profile () {
     const [showAddToAlbum, setShowAddToAlbum] = useState(false);
     const [title, setTitle] = useState("");
     const [sport, setSport] = useState("");
-    const [album, setAlbum] = useState(allAlbums[0]);
+    const [album, setAlbum] = useState();
     const dispatch = useDispatch()
     const { id } = useParams()
 
@@ -26,10 +26,7 @@ export default function Profile () {
         e.preventDefault();
         dispatch(createAlbumsThunk({title, sport, userId: sessionUser.id}))
     }
-    const submitAddToAlbum = (e) => {
-        e.preventDefault()
-        dispatch(addImgToAlbum({}))
-    }
+
     const openPhotos = () => {
         if (showPhotos === "photos") return;
         setShowPhotos("photos");
@@ -73,10 +70,16 @@ export default function Profile () {
                                         </button>
                                         {showAddToAlbum === true &&
                                             <div className="profile__AddToAlbumFormDiv">
-                                                <form onSubmit={submitAddToAlbum} className="profile__AddToAlbumForm">
-                                                    <select value={album} onChange={(e) => setAlbum(e.target.value)}>
+                                                <form onSubmit={(e) => {
+                                                e.preventDefault()
+                                                return dispatch(addImgToAlbum({id: img.id, albumId: album}))
+                                            }} className="profile__AddToAlbumForm">
+                                                    <select value={album} onChange={(e) =>
+                                                        // console.log(e.target.value)
+                                                        setAlbum(e.target.value)
+                                                        }>
                                                         {allAlbums?.map(album => (
-                                                            <option key={album.id}>{album.title}</option>
+                                                                <option key={album.id} value={album.id}>{album.title}</option>
                                                         ))}
                                                     </select>
                                                     <button type="submit">Add</button>
