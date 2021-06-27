@@ -18,13 +18,11 @@ router.get("/:id", asyncHandler(async(req, res) => {
     return res.json(albums)
 }))
 
-// router.get("/:id", asyncHandler(async(req, res) => {
-//     const id = parseInt(req.params.id, 10);
-//     const img = await image.findByPk(id, {
-//         include: [{model: comment, include: User}, User]
-//     })
-//     return res.json(img)
-// }))
+router.post("/", asyncHandler(async(req, res) => {
+    const { title, sport } = req.body;
+    const newAlbum = await album.create({ title, sport})
+    return res.json(newAlbum)
+}))
 
 // router.post("/:id", asyncHandler(async(req, res) => {
 //     const { imageUrl, userId, content, sport } = req.body
@@ -35,8 +33,16 @@ router.get("/:id", asyncHandler(async(req, res) => {
 //         content,
 //         sport,
 //     })
-
 // }))
+
+// router.get("/:id", asyncHandler(async(req, res) => {
+//     const id = parseInt(req.params.id, 10);
+//     const img = await image.findByPk(id, {
+//         include: [{model: comment, include: User}, User]
+//     })
+//     return res.json(img)
+// }))
+
 
 // router.delete("/:id", asyncHandler(async(req, res) => {
 //     const { id } = req.body

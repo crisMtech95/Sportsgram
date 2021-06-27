@@ -87,3 +87,50 @@
 .profile__postImageContainer:hover .profile__AddAlbumBtn {
     color: white;
 }
+
+
+
+
+
+/*************    Albums     *******/
+
+.profile__mainAlbumsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.profile__albumsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile__CollectionsTitle {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.profile__singleAlbum {
+    height: 400px;
+    width: 800px;
+    position: relative;
+    background-color: white;
+    margin: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    /* flex: 1 1; */
+}
+.profile__singleAlbumImgDiv {
+    width: 370px;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    border: 0.5px solid grey;
+}
+.profile__singleAlbumImg {
+    object-fit: contain;
+    width: 100%
+}
