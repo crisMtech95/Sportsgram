@@ -6,12 +6,14 @@ import { getProfileImages } from '../../store/images'
 import { getAlbumsThunk, createAlbumsThunk } from '../../store/albums'
 
 export default function Profile () {
-    const [showPhotos, setShowPhotos] = useState("albums");
-    const [title, setTitle] = useState("");
-    const [sport, setSport] = useState("");
     const sessionUser = useSelector(state => state.session.user)
     const allPhotos = useSelector(state => Object.values(state.images))
     const allAlbums = useSelector(state => Object.values(state.albums))
+    const [showPhotos, setShowPhotos] = useState("photos");
+    const [showAddToAlbum, setShowAddToAlbum] = useState(false);
+    const [title, setTitle] = useState("");
+    const [sport, setSport] = useState("");
+    const [album, setAlbum] = useState(allAlbums[0]);
     const dispatch = useDispatch()
     const { id } = useParams()
 
@@ -23,6 +25,10 @@ export default function Profile () {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createAlbumsThunk({title, sport, userId: sessionUser.id}))
+    }
+    const submitAddToAlbum = (e) => {
+        e.preventDefault()
+
     }
     const openPhotos = () => {
         if (showPhotos === "photos") return;
@@ -45,9 +51,9 @@ export default function Profile () {
                     <div className="profile__userToggle">
                         <button onClick={openPhotos}>Photos</button>
                         <button onClick={openAlbums}>Albums</button>
-                        {sessionUser?.id === +id &&
+                        {/* {sessionUser?.id === +id &&
                         <button onClick={openCreateAlbum}>Create an Album</button>
-                        }
+                        } */}
                     </div>
                 </div>
 {/* This is for the photos */}
@@ -60,7 +66,26 @@ export default function Profile () {
                                             <img alt="you'll never know"  src={img.imageUrl} className="profile__postImage"/>
                                     </a>
                                 {sessionUser?.id === img.userId && img.albumId === null &&
-                                    <button className="profile__AddAlbumBtn">Add to Album</button>
+                                    <div>
+                                        <button onClick={() => setShowAddToAlbum(!showAddToAlbum)}
+                                            className="profile__AddAlbumBtn">
+                                            Add to Album
+                                        </button>
+                                        {showAddToAlbum === true &&
+                                            <div className="profile__AddToAlbumFormDiv">
+                                                <form onSubmit={submitAddToAlbum} className="profile__AddToAlbumForm">
+                                                    <select value={album} onChange={(e) => setAlbum(e.target.value)}>
+                                                        {allAlbums?.map(album => (
+                                                            <option key={album.id}>{album.title}</option>
+                                                        ))}
+                                                    </select>
+
+
+                                                </form>
+                                            </div>
+                                        }
+                                    </div>
+
                                 }
                                 </div>
                             ))}

@@ -76,13 +76,18 @@
 }
 .profile__AddAlbumBtn {
     position: absolute;
-    bottom: 14px;
+    top: 0;
     left: 0;
     background-color: transparent;
     border: none;
     font-size: 14px;
     font-weight: 800px;
     color: transparent;
+}
+.profile__AddToAlbumFormDiv {
+    position: absolute;
+    top: 25px;
+    left: 0;
 }
 .profile__postImageContainer:hover .profile__AddAlbumBtn {
     color: white;
