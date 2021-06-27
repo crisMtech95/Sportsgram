@@ -34,6 +34,7 @@ export default function Profile () {
                     <div className="profile__userToggle">
                         <button onClick={openPhotos}>Photos</button>
                         <button onClick={openAlbums}>Albums</button>
+                        <button>Create an Album</button>
                     </div>
                 </div>
                 {showPhotos === "photos" &&

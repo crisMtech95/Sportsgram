@@ -12,6 +12,7 @@ export default function BigSinglePost () {
     const allComments = useSelector((state) => Object.values(state.comments))
     const { id } = useParams()
     const image = allImages[id];
+    const sillyStr = "Oops something went wrong!, please try again when we have a follow feature"
     // const allComments = useSelector(state => state.images[id]?.comments)
     // console.log("YEAH THAT RIGHT",allComments)
     const dispatch = useDispatch();
@@ -34,9 +35,14 @@ export default function BigSinglePost () {
             </div>
             <div className="singlePost__userInfo">
                 <div className="singpost__userLogo"></div>
-                <h1 className="singpost__username">{image?.User?.username}</h1>
+                <a href={`/profile/${image?.userId}`}  className="singpost__userATag">
+                    <h1 className="singpost__username">{image?.User?.username}</h1>
+                </a>
+
                 <div className="singpost__followBtn">
-                    <button className="singpost__followBtn">+ Follow</button>
+                    <button className="singpost__followBtn"
+                        onClick={() => alert("Oops something went wrong!, please try again when we have a follow feature")}
+                    >+   Follow</button>
                 </div>
             </div>
             <div className="singlePost__contentBigContainer">

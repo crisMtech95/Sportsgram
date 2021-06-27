@@ -45,9 +45,21 @@
     height: 80px;
     /* font-family: "Proxima Nova" */
 };
-.singpost__followBtn {
+.singpost__userATag {
+    text-decoration: none;
+}
+
+.singpost__followBtn > button{
     background-color: #128fdc;
     color: white;
+    width: 100px;
+    height: 30px;
+    margin-left: 15px;
+    border-radius: 4px;
+    border: none;
+}
+.singpost__followBtn > button:hover{
+    background-color: #099af5;
 }
 
 .singlePost__contentBigContainer {
