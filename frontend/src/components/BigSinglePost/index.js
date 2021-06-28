@@ -1,5 +1,5 @@
 import './BigSinglePost.css'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../store/images'
@@ -10,12 +10,21 @@ export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
     const allImages = useSelector((state) => state.images)
     const allComments = useSelector((state) => Object.values(state.comments))
+    const [showEditComment, setShowEditComment] = useState(false)
     const { id } = useParams()
     const image = allImages[id];
     const sillyStr = "Oops something went wrong!, please try again when we have a follow feature"
     // const allComments = useSelector(state => state.images[id]?.comments)
     // console.log("YEAH THAT RIGHT",allComments)
     const dispatch = useDispatch();
+
+    const openMenu = () => {
+        setShowEditComment(true);
+      };
+
+      const closeMenu = () => {
+        setShowEditComment(false);
+      };
 
     useEffect(() => {
         dispatch(getSinglePost(id))
@@ -59,9 +68,16 @@ export default function BigSinglePost () {
                             <h4>{comment?.User?.username}</h4>
                             <p>{comment?.comment}</p>
                             {sessionUser.id === comment.userId &&
-                            <div>
-                                <button type="submit" onClick={() => dispatch(delCom(comment.id))}>Delete</button>
-                                <EditComment co={comment}/>
+                            <div className="comment__editToggleBtn">
+                                <button onClick={!showEditComment ? openMenu : closeMenu } className="comment__3dotsBtn">
+                                    <div alt="you'll never know" className="comment__3dotsIcon"></div>
+                                </button>
+                                {showEditComment &&
+                                <div>
+                                    <button type="submit" onClick={() => dispatch(delCom(comment.id))}>Delete</button>
+                                    <EditComment co={comment}/>
+                                </div>
+                                }
                             </div>
                             }
 
@@ -71,6 +87,21 @@ export default function BigSinglePost () {
             </div>
         </div>
     )
+    /*
+    {sessionUser.id === img.userId &&
+                <div className="post__toggleBtn">
+                    <button onClick={!showMenu ? openMenu : closeMenu } className="post__3dotsBtn">
+                    <div alt="you'll never know" className="post__3dotsIcon"></div>
+                    </button>
+                    {showMenu && (
+                        <div className="post__editDelbtns">
+                            <EditPostForm img={img}/>
+                            <button type="submit" onClick={delImg} className="post__del">Delete</button>
+                        </div>
+                    )}
+                </div>
+    }
+    */
 
 
 }

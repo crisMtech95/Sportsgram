@@ -3,3 +3,34 @@
     bottom: 0px;
     right: 0px;
 }
+.comment__editToggleBtn {
+    height: 45px;
+    width:32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+}
+.comment__3dotsIcon {
+    background-image: url("../../homepageImg/3dots.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(30%);
+    width: 21px;
+    height: 21px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 7px;
+    right: 0;
+}
+.comment__3dotsBtn {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
