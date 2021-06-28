@@ -2,6 +2,7 @@ import "./EditComment.css"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { editComment } from "../../store/comments"
+import { delCom } from '../../store/comments'
 
 
 export default function EditComment ({ co }) {
@@ -34,7 +35,10 @@ export default function EditComment ({ co }) {
                         value={comment}
                         onChange={e => setComment(e.target.value)}
                         />
-                    <button type="submit" className="edit__btn">Edit Post</button>
+                    <div className="edit__formBtnsDiv">
+                        <button type="submit">Edit Post</button>
+                        <button onClick={() => dispatch(delCom(co.id))}>Delete</button>
+                    </div>
                 </form>
             </div>
     )

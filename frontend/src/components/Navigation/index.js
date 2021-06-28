@@ -22,7 +22,7 @@ function Navigation({ isLoaded }){
   return (
     <div className="mainContainer__navbar">
           <div className="navbar__homepage">
-            <NavLink exact to="/">Home</NavLink>
+          <NavLink to="/" className="navbar__uploadDiv"><div className="navbar__homeIcon"></div></NavLink>
           </div>
           <div className="navbar__search">
             <input type="text" placeholder="Photos,athletes,people"/>

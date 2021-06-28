@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../store/images'
 import EditComment from '../EditComment'
-import { delCom, getImageComments } from '../../store/comments'
+import { getImageComments } from '../../store/comments'
 
 export default function BigSinglePost () {
     const sessionUser = useSelector(state => state.session.user)
@@ -74,7 +74,6 @@ export default function BigSinglePost () {
                                 </button>
                                 {showEditComment &&
                                 <div>
-                                    <button type="submit" onClick={() => dispatch(delCom(comment.id))}>Delete</button>
                                     <EditComment co={comment}/>
                                 </div>
                                 }
@@ -87,21 +86,4 @@ export default function BigSinglePost () {
             </div>
         </div>
     )
-    /*
-    {sessionUser.id === img.userId &&
-                <div className="post__toggleBtn">
-                    <button onClick={!showMenu ? openMenu : closeMenu } className="post__3dotsBtn">
-                    <div alt="you'll never know" className="post__3dotsIcon"></div>
-                    </button>
-                    {showMenu && (
-                        <div className="post__editDelbtns">
-                            <EditPostForm img={img}/>
-                            <button type="submit" onClick={delImg} className="post__del">Delete</button>
-                        </div>
-                    )}
-                </div>
-    }
-    */
-
-
 }
