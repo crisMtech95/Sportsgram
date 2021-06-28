@@ -24,7 +24,7 @@ router.post("/", asyncHandler(async(req, res) => {
 
 router.patch("/", asyncHandler(async(req, res) => {
     const {comment, id} = req.body;
-    const result = await c.findByPk(id)
+    const result = await c.findByPk(id, { include: [User]})
     const data = await result.update({comment})
     return res.json(data)
     //  await c.update({ comment }, {where: id})

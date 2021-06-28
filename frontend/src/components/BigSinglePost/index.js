@@ -56,6 +56,7 @@ export default function BigSinglePost () {
                 <h3>Comments</h3>
                     {allComments?.map(comment => (
                         <div key={comment.id} className="singlePost__comment">
+                            <h4>{comment?.User?.username}</h4>
                             <p>{comment?.comment}</p>
                             {sessionUser.id === comment.userId &&
                             <div>

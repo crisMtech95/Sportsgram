@@ -25,7 +25,7 @@ export default function MainPage () {
                     <Post key={img.id} img={img}/>
                 ))}
             </div>
-            <div className="albumContainer"></div>
+            {/* <div className="albumContainer"></div> */}
         </div>
     )
 }
