@@ -148,3 +148,46 @@
     object-fit: contain;
     width: 100%
 }
+
+
+
+
+/************     CREATE AlBUM FORM        **********/
+
+
+
+.profile__mainCreateAlbumContainer {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+}
+
+/*              RECYCLE CODE FROM LOGIN           */
+/* .form_container {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    background: transparent;
+    width: 300px;
+    padding: 20px;
+    height: 300px;
+  }
+  .signup {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    box-shadow: 0 20px 48px rgb(0 0 0 / 15%);
+    background-color: white;
+  }
+.signup label {
+    display: block;
+    margin: 10px 0 0 0;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+  } */

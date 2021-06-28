@@ -126,26 +126,26 @@ export default function Profile () {
 {/* This is for the Crate Albums form */}
                 {showPhotos === "createAlbum" &&
                     <div className="profile__mainCreateAlbumContainer">
-                        <div className="profile__createAlbumContainer">
-                            <form onSubmit={onSubmit} className="">
+                        <div className="form_container">
+                            <form onSubmit={onSubmit} className="signup">
                                 {/* <ul>
                                     {errors.map((err, i) => <li key={i}>{err}</li>)}
                                 </ul> */}
-                                <label /> Title
-                                    <input className=""
-                                    type="text"
-                                    required
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                    />
-                                <label /> Sport
-                                    <textarea className=""
-                                    type="text"
-                                    required
-                                    value={sport}
-                                    onChange={e => setSport(e.target.value)}
-                                    />
-                                <button type="submit" className="">Add Album</button>
+                                    <label /> Title
+                                        <input className=""
+                                        type="text"
+                                        required
+                                        value={title}
+                                        onChange={e => setTitle(e.target.value)}
+                                        />
+                                    <label /> Sport
+                                        <textarea className="signup_input"
+                                        type="text"
+                                        required
+                                        value={sport}
+                                        onChange={e => setSport(e.target.value)}
+                                        />
+                                    <button type="submit" className="signup_btn">Add Album</button>
                             </form>
                         </div>
                     </div>
