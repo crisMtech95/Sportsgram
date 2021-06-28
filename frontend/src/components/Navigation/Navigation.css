@@ -119,8 +119,8 @@
     /* filter: dropshadow(color=#000000, offx=2, offy=2); */
 }
 .navbar__homeIcon {
-    width: 200px;
-    height: 30px;
+    width: 150px;
+    height: 25px;
     background-image: url("../../homepageImg/sportstagram2.png");
     background-repeat: no-repeat ;
     /* filter: invert(1); */
