@@ -39,6 +39,18 @@
  
  to be updated...
  
+ ## Follow users
+ 
+ to be updated...
+ 
+ ## like A post 
+ 
+ to be updated...
+ 
+ ## Chat built with Socket.io 
+ 
+ to be updated...
+ 
  
  # What's next?
  
