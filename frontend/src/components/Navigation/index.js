@@ -13,6 +13,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <div className="navbar__userbtns">
+        <NavLink to="/demo" id="navbar__demo">Demo</NavLink>
         <NavLink to="/login" id="navbar__login">Log In</NavLink>
         <NavLink to="/signup" id="navbar__signup">Sign Up</NavLink>
       </div>

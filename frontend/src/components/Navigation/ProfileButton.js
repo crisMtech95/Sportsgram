@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { Link } from 'react-router-dom'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -36,13 +37,12 @@ function ProfileButton({ user }) {
         <div className="navbar__profileIcon"></div>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <div className="navbar__userMenuDiv">
+          <Link to={`/profile/${user.id}`}>{user.username}</Link>
+          {/* <div>{user.email}</div> */}
+          <button onClick={logout} className="navbar__logoutBtn">Log Out</button>
+        </div>
+
       )}
     </div>
   );

@@ -10,6 +10,7 @@ import MainPage from './components/MainPage'
 import PostForm from './components/PostForm'
 import BigSinglePost from './components/BigSinglePost';
 import Profile from './components/Profile';
+import DemoLogin from './components/DemoLogin'
 
 function App() {
   const dispatch = useDispatch()
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/login">
               <LoginFormPage />
+            </Route>
+            <Route path="/demo">
+              <DemoLogin />
             </Route>
             <Route path="/signup">
               <SignupFormPage />
