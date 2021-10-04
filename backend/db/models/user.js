@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    profileContent: {
+      type: DataTypes.STRING,
+    },
     profilePic: {
       type: DataTypes.STRING,
     },
