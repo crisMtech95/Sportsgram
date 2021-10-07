@@ -5,6 +5,7 @@ const imagesRouter = require("./images.js");
 const commentsRouter = require("./comments.js")
 const albumsRouter = require("./albums")
 const asyncHandler = require('express-async-handler');
+const searchRouter = require("./search")
 
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
@@ -14,6 +15,7 @@ router.use("/users", usersRouter);
 router.use("/images", imagesRouter);
 router.use("/comments", commentsRouter);
 router.use("/albums", albumsRouter);
+router.use("/search", searchRouter);
 
 
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
