@@ -5,7 +5,7 @@ const GET_IMAGES = "get/images"
 const ADD_IMAGE = "add/image"
 const DEL_IMAGE = "del/image"
 const GET_IMG = "get/img"
-// const UPDATE_IMAGE = "update/image"
+
 
 
 export const getImages = (images) => {
@@ -64,7 +64,6 @@ export const getProfileImages = (id) => async(dispatch) => {
 
 
 export const createPost = (imgInfo) => async(dispatch) => {
-    // const { userId, imageUrl, content, sport } = imgInfo;
     const res = await csrfFetch('/api/images', {
         method: "POST",
         body: JSON.stringify(imgInfo)
@@ -80,10 +79,7 @@ export const delPost = (img) => async(dispatch) => {
         body: JSON.stringify(img)
     })
     const data = await res.json()
-    // console.log("RES FROM THE FETCH", res)
-    // console.log("RES FROM THE JSON", data)
     dispatch(delImage(img.id))
-
 }
 
 export const editPost = (img) => async(dispatch) => {
@@ -99,15 +95,12 @@ export const editPost = (img) => async(dispatch) => {
 }
 
 export const addImgToAlbum = img => async(dispatch) => {
-    console.log("THIS IS THE IMAGE OBJ ON THE THUNK", img)
     const res = await csrfFetch("/api/images", {
         method: "PATCH",
         body: JSON.stringify(img)
     })
     if (res.ok) {
-        console.log("result form REST ", res)
         const data = await res.json();
-        console.log("result form DATA ", data)
         dispatch(postImage(data))
         return data
     }
@@ -119,10 +112,12 @@ const imagesReducer = (state = initialState, action) => {
     let newState = {};
     switch(action.type) {
         case GET_IMAGES:
-            action.images.forEach((img) => {
-                newState[img.id] = img;
-            })
-            return {...newState};
+            // action.images.forEach((img) => {
+            //     console.log(img)
+            //     newState[img.id] = img;
+            // })
+            newState = action.images
+            return newState;
 
         case GET_IMG:
             newState[action.image.id] = action.image

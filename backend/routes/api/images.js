@@ -10,7 +10,8 @@ const router = express.Router();
 
 // Main page get all images
 router.get("/", asyncHandler(async(req, res) => {
-    const imgs = await image.findAll({ order: [["updatedAt", "ASC"]], include: [ User ]})
+    const imgs = await image.findAll({ include: [ User ], order : [["updatedAt", "DESC"]]})
+
     return res.json(imgs)
 }))
 
@@ -65,7 +66,6 @@ router.put("/", asyncHandler(async(req, res) => {
 }))
 router.patch("/", asyncHandler(async(req, res) => {
     const { id, albumId } = req.body;
-    console.log("THIS IS THE ALBUMID", albumId)
     const result = await image.findByPk(id)
     const data = await result.update({albumId: albumId})
     return res.json(data)

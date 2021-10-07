@@ -15,7 +15,6 @@ export default function BigSinglePost () {
     const image = allImages[id];
     const sillyStr = "Oops something went wrong!, please try again when we have a follow feature"
     // const allComments = useSelector(state => state.images[id]?.comments)
-    // console.log("YEAH THAT RIGHT",allComments)
     const dispatch = useDispatch();
 
     const openMenu = () => {

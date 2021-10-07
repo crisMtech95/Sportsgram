@@ -75,7 +75,6 @@ export default function Profile () {
                                                 return dispatch(addImgToAlbum({id: img.id, albumId: album}))
                                             }} className="profile__AddToAlbumForm">
                                                     <select value={album} onChange={(e) =>
-                                                        // console.log(e.target.value)
                                                         setAlbum(e.target.value)
                                                         }>
                                                         {allAlbums?.map(album => (

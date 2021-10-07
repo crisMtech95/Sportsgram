@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     albumId: DataTypes.INTEGER,
     imageUrl: DataTypes.STRING,
     content: DataTypes.STRING,
-    sport: DataTypes.STRING
+    sport: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {});
   image.associate = function(models) {
     image.belongsTo(models.User, { foreignKey: 'userId' });
@@ -14,3 +16,4 @@ module.exports = (sequelize, DataTypes) => {
   };
   return image;
 };
+
