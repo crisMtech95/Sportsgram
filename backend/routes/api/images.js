@@ -6,6 +6,7 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { image, User, comment } = require("../../db/models")
 
+
 const router = express.Router();
 
 // Main page get all images
@@ -14,6 +15,8 @@ router.get("/", asyncHandler(async(req, res) => {
 
     return res.json(imgs)
 }))
+
+// Post /api/users ---Sign up
 
 //User profile
 router.get("/profile/:id", asyncHandler(async(req, res) => {
