@@ -11,9 +11,11 @@ import PostForm from './components/PostForm'
 import BigSinglePost from './components/BigSinglePost';
 import Profile from './components/Profile';
 import DemoLogin from './components/DemoLogin'
+import Search from './components/Search';
 
 function App() {
   const dispatch = useDispatch()
+  const [searchStr, setSearchStr] = useState("")
   const [ isLoaded, setIsLoaded] = useState(false)
   useEffect(()=> {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
@@ -22,7 +24,7 @@ function App() {
 
   return isLoaded && (
     <div className="mainContainer">
-      <Navigation  isLoaded={isLoaded} />
+      <Navigation  isLoaded={isLoaded} searchStr={searchStr} setSearchStr={setSearchStr}/>
         {isLoaded && (
         <Switch>
             <Route path="/" exact>
@@ -48,6 +50,9 @@ function App() {
             </Route>
             <Route path="/profile/:id">
               <Profile />
+            </Route>
+            <Route path="/search">
+              <Search />
             </Route>
         </Switch>
         )}

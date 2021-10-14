@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded, searchStr, setSearchStr }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -26,7 +26,12 @@ function Navigation({ isLoaded }){
           <NavLink to="/" className="navbar__uploadDiv"><div className="navbar__homeIcon"></div></NavLink>
           </div>
           <div className="navbar__search">
-            <input type="text" placeholder="Photos,athletes,people"/>
+            <input
+              type="text"
+              placeholder="Photos,athletes,people"
+              value={searchStr}
+              onChange={(e) => setSearchStr(e.target.value)}
+              />
           </div>
           <div className="navbar__userIcon">
             <NavLink to="/addPhoto" className="navbar__uploadDiv"><div className="navbar__uploadIcon"></div></NavLink>

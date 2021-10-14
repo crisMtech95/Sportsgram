@@ -8,12 +8,12 @@ const router = express.Router();
 const { Op } = require("sequelize");
 
 // Main page get all images
-router.get("/", asyncHandler(async(req, res) => {
+router.patch("/", asyncHandler(async(req, res) => {
     const { content, sport } = req.body
     const imgs = await image.findAll({ where: {
         [Op.or]: [
-          { content: content },
-          { sport: sport }
+          { content: content }, // this will only find exacly that string. need to find
+          { sport: sport } // a way so it grabs if the string that is inside.
         ]
       }})
 
