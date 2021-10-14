@@ -1,11 +1,23 @@
 import './Navigation.css';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { getSearchThunk } from '../../store/search'
 
-function Navigation({ isLoaded, searchStr, setSearchStr }){
+function Navigation({ isLoaded }){
+  const history = useHistory()
+  const [searchStr, setSearchStr] = useState("")
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    if (searchStr.length) {
+      dispatch(getSearchThunk({content: searchStr}))
+    }
+  }, [searchStr])
+
 
   let sessionLinks;
   if (sessionUser) {
@@ -23,12 +35,17 @@ function Navigation({ isLoaded, searchStr, setSearchStr }){
   return (
     <div className="mainContainer__navbar">
           <div className="navbar__homepage">
-          <NavLink to="/" className="navbar__uploadDiv"><div className="navbar__homeIcon"></div></NavLink>
+          <NavLink
+            to="/"
+            className="navbar__uploadDiv"
+            onClick={() => setSearchStr("")}
+            ><div className="navbar__homeIcon"></div></NavLink>
           </div>
           <div className="navbar__search">
             <input
               type="text"
               placeholder="Photos,athletes,people"
+              onClick={() => {history.push("/search")}}
               value={searchStr}
               onChange={(e) => setSearchStr(e.target.value)}
               />

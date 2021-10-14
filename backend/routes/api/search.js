@@ -9,11 +9,11 @@ const { Op } = require("sequelize");
 
 // Main page get all images
 router.patch("/", asyncHandler(async(req, res) => {
-    const { content, sport } = req.body
+    const { content } = req.body
     const imgs = await image.findAll({ where: {
         [Op.or]: [
           { content: content }, // this will only find exacly that string. need to find
-          { sport: sport } // a way so it grabs if the string that is inside.
+          { sport: content } // a way so it grabs if the string that is inside.
         ]
       }})
 

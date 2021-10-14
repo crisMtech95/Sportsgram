@@ -15,8 +15,8 @@ import Search from './components/Search';
 
 function App() {
   const dispatch = useDispatch()
-  const [searchStr, setSearchStr] = useState("")
   const [ isLoaded, setIsLoaded] = useState(false)
+
   useEffect(()=> {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch])
@@ -24,7 +24,7 @@ function App() {
 
   return isLoaded && (
     <div className="mainContainer">
-      <Navigation  isLoaded={isLoaded} searchStr={searchStr} setSearchStr={setSearchStr}/>
+      <Navigation  isLoaded={isLoaded} />
         {isLoaded && (
         <Switch>
             <Route path="/" exact>

@@ -4,7 +4,7 @@ import Post from '../Post';
 
 export default function Search() {
     const dispatch = useDispatch()
-
+    
     // const sessionUser = useSelector(state => state.session.user)
 
     // if (sessionUser) return (
@@ -14,7 +14,7 @@ export default function Search() {
 
 
     useEffect(() => {
-        
+
     }, [])
 
     return (
