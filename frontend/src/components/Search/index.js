@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Post from '../Post';
+import "./Search.css"
 
 export default function Search() {
     const dispatch = useDispatch()
-    
+
     // const sessionUser = useSelector(state => state.session.user)
 
     // if (sessionUser) return (

@@ -5,8 +5,8 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    margin-top: 80px;
-    background-color: rgb(211, 211, 211);
+    padding-top: 80px;
+    background-color: rgb(235, 235, 235);
 }
 
 

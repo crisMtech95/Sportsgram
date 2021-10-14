@@ -1,0 +1,10 @@
+.search__mainContainer {
+    position: relative;
+    width: 100%;
+    color:black;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding-top: 80px;
+    background-color: rgb(235, 235, 235);
+}
