@@ -10,6 +10,7 @@ export default function SignupFormPage () {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [image, setImage] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState("")
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
@@ -19,7 +20,7 @@ export default function SignupFormPage () {
     const onSubmit = (e) => {
         e.preventDefault()
         if (password === confirmPassword) {
-            return dispatch(sessionActions.signupUser({email, username, password, fullName}))
+            return dispatch(sessionActions.signupUser({email, username, password, fullName, image}))
                 .catch(async (res) => {
                     const data = await res.json()
                     if (data && data.errors) setErrors(data.errors)
@@ -27,6 +28,11 @@ export default function SignupFormPage () {
         }
         return setErrors(["Confirm Password field must be the same as the Password field"])
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
 
     return (
         <div className="login__mainContainer" id="bcimgsignup">
@@ -63,6 +69,16 @@ export default function SignupFormPage () {
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         />
+                    <label>
+                        <input type="file" onChange={updateFile} />
+                    </label>
+                    {/* <label>
+                        Multiple Upload
+                        <input
+                        type="file"
+                        multiple
+                        onChange={updateFiles} />
+                    </label> */}
                     <label /> Confirm Password
                         <input className="signup_input"
                         type="password"
