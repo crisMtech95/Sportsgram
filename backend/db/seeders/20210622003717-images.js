@@ -1,8 +1,16 @@
 'use strict';
 
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('images', [
+      options.tableName = 'images';
+      return queryInterface.bulkInsert(options, [
         {
         imageUrl: "https://icdn.football-espana.net/wp-content/uploads/2020/11/merlin_153612873_5bb119b9-8972-4087-b4fd-371cab8c5ba2-superJumbo.jpg",
         sport: "soccer",
@@ -103,6 +111,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('images', null, {});
+      options.tableName = 'images';
+      return queryInterface.bulkDelete(options, null, {});
   }
 };

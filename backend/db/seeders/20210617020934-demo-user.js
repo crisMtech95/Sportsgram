@@ -2,9 +2,17 @@
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
 
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;
+}
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
+    options.tableName = 'Users';
+    return queryInterface.bulkInsert(options, [
       {
         email: 'demo@user.io',
         username: 'Demo',
@@ -28,7 +36,8 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Users', {
+    options.tableName = "Users";
+    return queryInterface.bulkDelete(options, {
       username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
     }, {});
   }

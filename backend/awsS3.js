@@ -88,15 +88,6 @@ const singleMulterUpload = (nameOfKey) =>
 const multipleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).array(nameOfKey);
 
-const storage = multer.memoryStorage({
-  destination: function (req, file, callback) {
-    callback(null, "");
-  },
-});
-
-const singleMulterUpload = (nameOfKey) =>
-  multer({ storage: storage }).single(nameOfKey);
-
 module.exports = {
   s3,
   singlePublicFileUpload,
